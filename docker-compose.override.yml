@@ -1,0 +1,39 @@
+version: "3.8"
+
+services:
+  database:
+    labels:
+      - traefik.enable=false
+  php:
+    build:
+      context: .
+      dockerfile: Dockerfile_dev
+      target: drupal_php
+    container_name: ${PROJECT_NAME}_php-buster
+    image: ${PROJECT_NAME}/php-buster:${PROJECT_TAG}
+    volumes:
+      - ./:${PROJECT_WORKDIR:-/srv/app}:rw
+#      - ${PROJECT_WORKDIR:-/srv/app}/vendor
+    labels:
+      - traefik.enable=false
+
+  nginx:
+    build:
+      context: .
+      dockerfile: Dockerfile_dev
+      target: drupal_nginx
+    volumes:
+      - ./web:${PROJECT_WORKDIR:-/srv/app}/web:ro
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.${PROJECT_NAME}_nginx.rule=Host(`${NGINX_HOST}`)
+
+  traefik:
+    image: traefik:v2.7.0
+    container_name: ${PROJECT_NAME}_traefik
+    command: --api.insecure=true --providers.docker
+    ports:
+      - "${PROJECT_PORT}:80"
+      - '8080:8080' # Dashboard
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock

@@ -1,0 +1,77 @@
+version: "3.8"
+
+services:
+  database:
+    image: ${DATABASE_TAG}
+    container_name: ${PROJECT_NAME}_database
+    stop_grace_period: 30s
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DATABASE_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${DATABASE_NAME}
+      MYSQL_USER: ${DATABASE_USER}
+      MYSQL_PASSWORD: ${DATABASE_PASSWORD}
+    env_file:
+      - .env
+    volumes:
+#      - ./docker/db/init:/docker-entrypoint-initdb.d # Place init .sql file(s) here.
+      - db-data:/var/lib/mysql # Use bind mount
+
+  php:
+    build:
+      context: .
+      target: drupal_php
+      args:
+        - PHP_TAG=${PHP_TAG:-8.1-fpm-alpine3.15}
+        - APCU_VERSION=${APCU_VERSION:-5.1.21}
+        - DRUPAL_VERSION=${DRUPAL_VERSION:-9.4.8}
+        - WORKDIR=${PROJECT_WORKDIR:-/srv/app}
+    restart: unless-stopped
+    image: ${PROJECT_NAME}/php:${PROJECT_TAG}
+    container_name: ${PROJECT_NAME}_php
+    depends_on:
+      - database
+    env_file:
+      - .env
+#    environment:
+#      DRUSH_OPTIONS_URI: "http://${PROJECT_BASE_URL}:${PROJECT_PORT}"
+
+#  crond:
+#    build:
+#      context: .
+#      target: drupal_php
+#      args:
+#        - PHP_TAG=${PHP_TAG:-8.1-fpm-alpine3.15}
+#        - APCU_VERSION=${APCU_VERSION:-5.1.21}
+#        - WORKDIR=${PROJECT_WORKDIR:-/srv/app}
+#    restart: unless-stopped
+#    container_name: ${PROJECT_NAME}/crond:${PROJECT_TAG}
+#    environment:
+#      CRONTAB: "0 * * * * drush -r /var/www/html/web cron"
+#    command: sudo -E LD_PRELOAD=/usr/lib/preloadable_libiconv.so crond -f -d 0
+#    volumes:
+#      - ./:/var/www/html:rw,cached
+
+  nginx:
+    build:
+      context: .
+      target: drupal_nginx
+      args:
+        - NGINX_VERSION=${NGINX_VERSION:-1.21}
+        - NGINX_HOST=${NGINX_HOST:-localhost}
+        - NGINX_HTTP_PORT=${NGINX_HTTP_PORT:-80}
+        - WORKDIR=${PROJECT_WORKDIR:-/srv/app}
+    restart: unless-stopped
+    image: ${PROJECT_NAME}/nginx:${PROJECT_TAG}
+    container_name: ${PROJECT_NAME}_nginx
+    depends_on:
+      - php
+    environment:
+      SERVER_NAME: ${NGINX_HOST:-localhost}
+      PROJECT_WORKDIR: ${PROJECT_WORKDIR:-/srv/app}
+    env_file:
+      - .env
+
+volumes:
+  db-data:
+  # to share code between containers
+#  codebase:

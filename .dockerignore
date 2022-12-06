@@ -1,0 +1,31 @@
+# Ignore git directory
+.git
+
+# Ignore vendor dependencies
+vendor/
+
+# Ignore dependencies that are managed with Composer.
+# Generally you should only ignore the root vendor directory. It's important
+# that core/assets/vendor and any other vendor directories within contrib or
+# custom module, theme, etc., are not ignored unless you purposely do so.
+/web/core
+/web/modules/README.txt
+/web/profiles/README.txt
+/web/themes/README.txt
+/web/.csslintrc
+/web/.eslintignore
+/web/.eslintrc.json
+/web/.ht.router.php
+/web/.htaccess
+/web/autoload.php
+/web/example.gitignore
+/web/index.php
+/web/INSTALL.txt
+/web/README.md
+/web/robots.txt
+/web/update.php
+/web/web.config
+
+# IDE
+.idea/
+.vscode/

@@ -1,0 +1,135 @@
+# the different stages of this Dockerfile are meant to be built into separate images
+# https://docs.docker.com/develop/develop-images/multistage-build/#stop-at-a-specific-build-stage
+# https://docs.docker.com/compose/compose-file/#target
+
+
+# https://docs.docker.com/engine/reference/builder/#understand-how-arg-and-from-interact
+ARG PHP_VERSION=8.1
+ARG NGINX_VERSION=1.22
+
+ARG WORKDIR=/srv/app
+ARG DRUPAL_VERSION=9.4.8
+
+# Nginx env variables
+ARG NGINX_HOST=localhost
+ARG NGINX_HTTP_PORT=80
+
+# "php" stage
+# see https://www.drupal.org/docs/system-requirements/php-requirements
+FROM php:${PHP_VERSION}-fpm-buster AS drupal_php
+
+ARG WORKDIR
+ARG DRUPAL_VERSION
+
+# https://www.drupal.org/node/3060/release
+ENV DRUPAL_VERSION ${DRUPAL_VERSION}
+
+# persistent / runtime deps
+RUN apt-get update; \
+    apt-get install -y --no-install-recommends \
+		zip \
+		unzip \
+		git \
+	;
+
+# install Drupal required PHP extensions
+RUN set -eux; \
+	\
+	if command -v a2enmod; then \
+		a2enmod rewrite; \
+	fi; \
+	\
+	savedAptMark="$(apt-mark showmanual)"; \
+	\
+	apt-get update; \
+	apt-get install -y --no-install-recommends \
+		libfreetype6-dev \
+		libjpeg-dev \
+		libpng-dev \
+		libpq-dev \
+		libwebp-dev \
+		libzip-dev \
+	; \
+	\
+	docker-php-ext-configure gd \
+		--with-freetype \
+		--with-jpeg=/usr \
+		--with-webp \
+	; \
+	\
+	docker-php-ext-install -j "$(nproc)" \
+		gd \
+		opcache \
+		pdo_mysql \
+		pdo_pgsql \
+		zip \
+	; \
+	\
+# reset apt-mark's "manual" list so that "purge --auto-remove" will remove all build dependencies
+	apt-mark auto '.*' > /dev/null; \
+	apt-mark manual $savedAptMark; \
+	ldd "$(php -r 'echo ini_get("extension_dir");')"/*.so \
+		| awk '/=>/ { print $3 }' \
+		| sort -u \
+		| xargs -r dpkg-query -S \
+		| cut -d: -f1 \
+		| sort -u \
+		| xargs -rt apt-mark manual; \
+	\
+	apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false; \
+	rm -rf /var/lib/apt/lists/*
+
+RUN ln -s $PHP_INI_DIR/php.ini-production $PHP_INI_DIR/php.ini
+COPY docker/php/conf.d/drupal.dev.ini $PHP_INI_DIR/conf.d/drupal.ini
+COPY docker/php/php-fpm.d/zz-docker.conf /usr/local/etc/php-fpm.d/zz-docker.conf
+
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+# https://getcomposer.org/doc/03-cli.md#composer-allow-superuser
+ENV COMPOSER_ALLOW_SUPERUSER=1
+ENV PATH="${PATH}:/root/.composer/vendor/bin"
+
+# set project working directory
+WORKDIR ${WORKDIR}
+# install drupal specified version
+#RUN set -eux; \
+#	export COMPOSER_HOME="$(mktemp -d)"; \
+#	composer create-project "drupal/recommended-project:${DRUPAL_VERSION}" --no-interaction --no-progress --prefer-dist; \
+#  # delete composer cache \
+#  rm -rf "$COMPOSER_HOME"
+# copy project web directory
+COPY . .
+# install project dependencies
+RUN set -eux; \
+	export COMPOSER_HOME="$(mktemp -d)"; \
+	composer install --prefer-dist --no-autoloader --no-progress --no-interaction --no-scripts --no-dev; \
+	composer dump-autoload --optimize; \
+	chown -R www-data:www-data web/sites web/modules web/themes; \
+  rmdir /var/www/html; \
+  ln -sf /opt/drupal/web /var/www/html; \
+  # delete composer cache \
+  rm -rf "$COMPOSER_HOME"
+# put bin directory in PATH environnement variable to have all bins as global commands
+ENV PATH ${PATH}:${WORKDIR}/vendor/bin
+# DOCKER ENTRYPOINT
+COPY docker/php/docker-entrypoint.sh /usr/local/bin/docker-entrypoint
+RUN chmod +x /usr/local/bin/docker-entrypoint
+ENTRYPOINT ["docker-entrypoint"]
+CMD ["php-fpm"]
+
+# "nginx" stage
+FROM nginx:${NGINX_VERSION}-alpine AS drupal_nginx
+
+# retrieve ARG variables defined before the "FROM" clause
+ARG WORKDIR
+ARG NGINX_HOST
+ARG NGINX_HTTP_PORT
+# Env variables used in default nginx config file <nginx.conf>, it can be override by .env file if needed
+ENV PROJECT_WORKDIR ${WORKDIR}
+ENV NGINX_HOST ${NGINX_HOST}
+ENV NGINX_HTTP_PORT ${NGINX_HTTP_PORT}
+# copy default nginx config
+COPY docker/nginx/default.conf /etc/nginx/templates/default.conf.template
+# set project working directory
+WORKDIR ${WORKDIR}
+# copy project web directory
+COPY --from=drupal_php ${WORKDIR}/web ./web
