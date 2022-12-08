@@ -1,0 +1,20 @@
+uuid: 29d8b627-cef0-4d55-8e70-40696c33a3a9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_student_high_school_name
+  module:
+    - user
+id: user.user.field_student_high_school_name
+field_name: field_student_high_school_name
+entity_type: user
+bundle: user
+label: 'High school name'
+description: 'The student''s high school name.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

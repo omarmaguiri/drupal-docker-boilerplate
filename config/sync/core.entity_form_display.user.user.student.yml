@@ -1,0 +1,296 @@
+uuid: 41b0635f-d92d-45b0-837c-9dd9e4194784
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.user.student
+    - field.field.user.user.field_bac_general_score
+    - field.field.user.user.field_student_address
+    - field.field.user.user.field_student_bac_field
+    - field.field.user.user.field_student_bac_type
+    - field.field.user.user.field_student_birth_date
+    - field.field.user.user.field_student_birth_place
+    - field.field.user.user.field_student_cin
+    - field.field.user.user.field_student_cin_file
+    - field.field.user.user.field_student_city
+    - field.field.user.user.field_student_converter
+    - field.field.user.user.field_student_coupon
+    - field.field.user.user.field_student_first_name
+    - field.field.user.user.field_student_first_name_arabic
+    - field.field.user.user.field_student_gender
+    - field.field.user.user.field_student_high_school_city
+    - field.field.user.user.field_student_high_school_name
+    - field.field.user.user.field_student_last_name
+    - field.field.user.user.field_student_last_name_arabic
+    - field.field.user.user.field_student_massar_code
+    - field.field.user.user.field_student_national_score
+    - field.field.user.user.field_student_parent_phone
+    - field.field.user.user.field_student_phone
+    - field.field.user.user.field_student_promotion
+    - field.field.user.user.field_student_region
+    - field.field.user.user.field_student_regional_score
+    - field.field.user.user.field_student_required_documents
+    - field.field.user.user.field_student_semester_score
+    - field.field.user.user.field_student_sms_channel
+    - field.field.user.user.field_student_transcript_file
+    - field.field.user.user.field_user_branch
+    - field.field.user.user.field_user_full_name
+    - field.field.user.user.user_picture
+    - image.style.thumbnail
+  module:
+    - datetime
+    - file
+    - image
+    - user
+_core:
+  default_config_hash: FaQ9Ptcpxpg30AtiqRDtl_8zbJArHP1LPfug_s59TOA
+id: user.user.student
+targetEntityType: user
+bundle: user
+mode: student
+content:
+  field_bac_general_score:
+    type: number
+    weight: 23
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_student_address:
+    type: string_textarea
+    weight: 13
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_student_bac_field:
+    type: entity_reference_autocomplete
+    weight: 16
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_student_bac_type:
+    type: options_buttons
+    weight: 14
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_student_birth_date:
+    type: datetime_default
+    weight: 7
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_student_birth_place:
+    type: string_textfield
+    weight: 8
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_student_cin:
+    type: string_textfield
+    weight: 6
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_student_cin_file:
+    type: file_generic
+    weight: 25
+    region: content
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
+  field_student_city:
+    type: entity_reference_autocomplete
+    weight: 12
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_student_converter:
+    type: entity_reference_autocomplete
+    weight: 29
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_student_coupon:
+    type: entity_reference_autocomplete
+    weight: 28
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_student_first_name:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_student_first_name_arabic:
+    type: string_textfield
+    weight: 3
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_student_gender:
+    type: options_buttons
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_student_high_school_city:
+    type: entity_reference_autocomplete
+    weight: 18
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_student_high_school_name:
+    type: string_textfield
+    weight: 19
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_student_last_name:
+    type: string_textfield
+    weight: 2
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_student_last_name_arabic:
+    type: string_textfield
+    weight: 4
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_student_massar_code:
+    type: string_textfield
+    weight: 15
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_student_national_score:
+    type: number
+    weight: 22
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_student_parent_phone:
+    type: string_textfield
+    weight: 10
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_student_phone:
+    type: string_textfield
+    weight: 9
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_student_promotion:
+    type: entity_reference_autocomplete
+    weight: 27
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_student_region:
+    type: entity_reference_autocomplete
+    weight: 17
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_student_regional_score:
+    type: number
+    weight: 20
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_student_required_documents:
+    type: options_buttons
+    weight: 24
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_student_semester_score:
+    type: number
+    weight: 21
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_student_sms_channel:
+    type: options_buttons
+    weight: 11
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_student_transcript_file:
+    type: file_generic
+    weight: 26
+    region: content
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
+  user_picture:
+    type: image_image
+    weight: 0
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+hidden:
+  account: true
+  contact: true
+  field_user_branch: true
+  field_user_full_name: true
+  language: true
+  timezone: true

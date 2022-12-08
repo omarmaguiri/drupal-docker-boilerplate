@@ -1,0 +1,21 @@
+uuid: ab86a342-8b50-4b56-ac16-686103e21fc8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_student_bac_type
+  module:
+    - options
+    - user
+id: user.user.field_student_bac_type
+field_name: field_student_bac_type
+entity_type: user
+bundle: user
+label: 'Baccalaureate type'
+description: 'the student''s baccalaureate type.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,30 @@
+uuid: f2e0923f-c9a9-4523-b28b-fc672c57b7d1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_user_branch
+    - taxonomy.vocabulary.company_branches
+  module:
+    - user
+id: user.user.field_user_branch
+field_name: field_user_branch
+entity_type: user
+bundle: user
+label: Branch
+description: 'Branch to which the user belongs.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      company_branches: company_branches
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

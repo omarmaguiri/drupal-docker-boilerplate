@@ -1,0 +1,8 @@
+uuid: 8a50e9b1-1325-4095-9e22-d51f59c40819
+langcode: en
+status: true
+dependencies: {  }
+name: 'Company branches'
+vid: company_branches
+description: 'Contains all company branches'
+weight: 0

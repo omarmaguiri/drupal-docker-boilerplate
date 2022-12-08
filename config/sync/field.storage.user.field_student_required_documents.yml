@@ -1,0 +1,30 @@
+uuid: 2bcda244-03d6-4c4f-800a-b092fc72a1b7
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - user
+id: user.field_student_required_documents
+field_name: field_student_required_documents
+entity_type: user
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: cin
+      label: 'CIN legalized'
+    -
+      value: transcript
+      label: 'Transcript of records'
+    -
+      value: picture
+      label: Picture
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,20 @@
+uuid: 2aa848c4-7f3d-4945-a54a-27e7351aecec
+langcode: en
+status: true
+dependencies:
+  module:
+    - taxonomy
+    - user
+id: user.field_student_region
+field_name: field_student_region
+entity_type: user
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

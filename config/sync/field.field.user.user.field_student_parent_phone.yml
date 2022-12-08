@@ -1,0 +1,20 @@
+uuid: 9cc66d02-6e2b-4dc5-bc3d-6b34fe19287f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_student_parent_phone
+  module:
+    - user
+id: user.user.field_student_parent_phone
+field_name: field_student_parent_phone
+entity_type: user
+bundle: user
+label: 'Parent phone number'
+description: 'The student''s parent phone number.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

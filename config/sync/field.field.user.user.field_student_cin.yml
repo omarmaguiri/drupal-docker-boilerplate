@@ -1,0 +1,20 @@
+uuid: 016cba36-c8d9-416f-81e7-f4b2182cdb6b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_student_cin
+  module:
+    - user
+id: user.user.field_student_cin
+field_name: field_student_cin
+entity_type: user
+bundle: user
+label: CIN
+description: 'The student''s national ID card.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

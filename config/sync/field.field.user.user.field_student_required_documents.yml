@@ -1,0 +1,21 @@
+uuid: ea23c27a-b202-4fb6-a329-bcc317c33270
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_student_required_documents
+  module:
+    - options
+    - user
+id: user.user.field_student_required_documents
+field_name: field_student_required_documents
+entity_type: user
+bundle: user
+label: 'Required documents (paper)'
+description: 'List of documents that the student has provided.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

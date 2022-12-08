@@ -1,0 +1,14 @@
+uuid: 3d465d9f-0535-4c77-ad39-94c87f8d9bba
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.branch_agent
+  module:
+    - user
+id: user_remove_role_action.branch_agent
+label: 'Remove the Branch_agent role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: branch_agent

@@ -1,0 +1,20 @@
+uuid: fd405b61-14e6-4b71-a0d9-4069d3c043ea
+langcode: en
+status: true
+dependencies:
+  module:
+    - datetime
+    - user
+id: user.field_student_birth_date
+field_name: field_student_birth_date
+entity_type: user
+type: datetime
+settings:
+  datetime_type: date
+module: datetime
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

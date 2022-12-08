@@ -1,0 +1,27 @@
+uuid: a09bb4bb-1634-46d8-8bd0-41f2cdbcba0e
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - user
+id: user.field_student_sms_channel
+field_name: field_student_sms_channel
+entity_type: user
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: personal
+      label: Personal
+    -
+      value: parent
+      label: Parent
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

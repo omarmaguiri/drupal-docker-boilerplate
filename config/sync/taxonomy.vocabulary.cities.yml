@@ -1,0 +1,8 @@
+uuid: 9f1bcfa7-6818-4c39-8b60-6badd2d07439
+langcode: en
+status: true
+dependencies: {  }
+name: Cities
+vid: cities
+description: 'The moroccan cities.'
+weight: 0

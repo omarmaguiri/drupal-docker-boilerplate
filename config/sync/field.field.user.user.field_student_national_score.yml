@@ -1,0 +1,24 @@
+uuid: 5a4f2685-ad0a-4afa-a964-8c2b80c2aab9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_student_national_score
+  module:
+    - user
+id: user.user.field_student_national_score
+field_name: field_student_national_score
+entity_type: user
+bundle: user
+label: 'National exam score'
+description: 'The student''s national exam score.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: !!float 0
+  max: !!float 20
+  prefix: ''
+  suffix: ''
+field_type: decimal

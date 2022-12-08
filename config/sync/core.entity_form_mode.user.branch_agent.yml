@@ -1,0 +1,10 @@
+uuid: 84ccf352-b5f8-4e90-980e-b420681b8810
+langcode: en
+status: true
+dependencies:
+  module:
+    - user
+id: user.branch_agent
+label: 'Branch agent'
+targetEntityType: user
+cache: true

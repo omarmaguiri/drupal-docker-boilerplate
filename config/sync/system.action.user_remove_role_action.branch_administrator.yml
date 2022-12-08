@@ -1,0 +1,14 @@
+uuid: cf98e2d2-d9a0-4327-8f82-cd0a10951111
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.branch_administrator
+  module:
+    - user
+id: user_remove_role_action.branch_administrator
+label: 'Remove the Branch_administrator role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: branch_administrator

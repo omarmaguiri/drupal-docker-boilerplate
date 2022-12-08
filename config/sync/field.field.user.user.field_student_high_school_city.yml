@@ -1,0 +1,30 @@
+uuid: b03d6ec1-2bb3-4843-bf42-ca061a4e309b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_student_high_school_city
+    - taxonomy.vocabulary.cities
+  module:
+    - user
+id: user.user.field_student_high_school_city
+field_name: field_student_high_school_city
+entity_type: user
+bundle: user
+label: 'High school city'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      cities: cities
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

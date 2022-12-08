@@ -1,0 +1,8 @@
+uuid: 46f317d3-346d-4aed-bb86-899ee7ccab9c
+langcode: en
+status: true
+dependencies: {  }
+name: 'Baccalaureate fields'
+vid: bac_fields
+description: 'The baccalaureate fields.'
+weight: 0

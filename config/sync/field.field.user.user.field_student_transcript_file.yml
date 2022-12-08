@@ -1,0 +1,27 @@
+uuid: 5fb18aeb-e697-4820-9a57-a3c9f58dc101
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_student_transcript_file
+  module:
+    - file
+    - user
+id: user.user.field_student_transcript_file
+field_name: field_student_transcript_file
+entity_type: user
+bundle: user
+label: 'Transcript of records'
+description: 'The student''s transcript of records document.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: upload/students
+  file_extensions: 'pdf png'
+  max_filesize: ''
+  description_field: false
+field_type: file
