@@ -3,9 +3,9 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.user.user.field_bac_general_score
     - field.field.user.user.field_student_address
     - field.field.user.user.field_student_bac_field
+    - field.field.user.user.field_student_bac_general_score
     - field.field.user.user.field_student_bac_type
     - field.field.user.user.field_student_birth_date
     - field.field.user.user.field_student_birth_place
@@ -49,17 +49,6 @@ targetEntityType: user
 bundle: user
 mode: default
 content:
-  field_bac_general_score:
-    type: number_decimal
-    label: above
-    settings:
-      thousand_separator: ''
-      decimal_separator: .
-      scale: 2
-      prefix_suffix: true
-    third_party_settings: {  }
-    weight: 26
-    region: content
   field_student_address:
     type: basic_string
     label: above
@@ -74,6 +63,17 @@ content:
       link: true
     third_party_settings: {  }
     weight: 18
+    region: content
+  field_student_bac_general_score:
+    type: number_decimal
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 34
     region: content
   field_student_bac_type:
     type: list_default

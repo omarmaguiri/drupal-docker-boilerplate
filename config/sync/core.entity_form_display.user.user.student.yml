@@ -4,9 +4,9 @@ status: true
 dependencies:
   config:
     - core.entity_form_mode.user.student
-    - field.field.user.user.field_bac_general_score
     - field.field.user.user.field_student_address
     - field.field.user.user.field_student_bac_field
+    - field.field.user.user.field_student_bac_general_score
     - field.field.user.user.field_student_bac_type
     - field.field.user.user.field_student_birth_date
     - field.field.user.user.field_student_birth_place
@@ -49,16 +49,14 @@ targetEntityType: user
 bundle: user
 mode: student
 content:
-  field_bac_general_score:
-    type: number
-    weight: 23
+  account:
+    weight: 9
     region: content
-    settings:
-      placeholder: ''
+    settings: {  }
     third_party_settings: {  }
   field_student_address:
     type: string_textarea
-    weight: 13
+    weight: 14
     region: content
     settings:
       rows: 5
@@ -66,7 +64,7 @@ content:
     third_party_settings: {  }
   field_student_bac_field:
     type: entity_reference_autocomplete
-    weight: 16
+    weight: 17
     region: content
     settings:
       match_operator: CONTAINS
@@ -74,9 +72,16 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  field_student_bac_general_score:
+    type: number
+    weight: 24
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
   field_student_bac_type:
     type: options_buttons
-    weight: 14
+    weight: 15
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -104,14 +109,14 @@ content:
     third_party_settings: {  }
   field_student_cin_file:
     type: file_generic
-    weight: 25
+    weight: 26
     region: content
     settings:
       progress_indicator: throbber
     third_party_settings: {  }
   field_student_city:
     type: entity_reference_autocomplete
-    weight: 12
+    weight: 13
     region: content
     settings:
       match_operator: CONTAINS
@@ -121,7 +126,7 @@ content:
     third_party_settings: {  }
   field_student_converter:
     type: entity_reference_autocomplete
-    weight: 29
+    weight: 30
     region: content
     settings:
       match_operator: CONTAINS
@@ -131,7 +136,7 @@ content:
     third_party_settings: {  }
   field_student_coupon:
     type: entity_reference_autocomplete
-    weight: 28
+    weight: 29
     region: content
     settings:
       match_operator: CONTAINS
@@ -163,7 +168,7 @@ content:
     third_party_settings: {  }
   field_student_high_school_city:
     type: entity_reference_autocomplete
-    weight: 18
+    weight: 19
     region: content
     settings:
       match_operator: CONTAINS
@@ -173,7 +178,7 @@ content:
     third_party_settings: {  }
   field_student_high_school_name:
     type: string_textfield
-    weight: 19
+    weight: 20
     region: content
     settings:
       size: 60
@@ -197,7 +202,7 @@ content:
     third_party_settings: {  }
   field_student_massar_code:
     type: string_textfield
-    weight: 15
+    weight: 16
     region: content
     settings:
       size: 60
@@ -205,14 +210,14 @@ content:
     third_party_settings: {  }
   field_student_national_score:
     type: number
-    weight: 22
+    weight: 23
     region: content
     settings:
       placeholder: ''
     third_party_settings: {  }
   field_student_parent_phone:
     type: string_textfield
-    weight: 10
+    weight: 11
     region: content
     settings:
       size: 60
@@ -220,7 +225,7 @@ content:
     third_party_settings: {  }
   field_student_phone:
     type: string_textfield
-    weight: 9
+    weight: 10
     region: content
     settings:
       size: 60
@@ -228,7 +233,7 @@ content:
     third_party_settings: {  }
   field_student_promotion:
     type: entity_reference_autocomplete
-    weight: 27
+    weight: 28
     region: content
     settings:
       match_operator: CONTAINS
@@ -238,7 +243,7 @@ content:
     third_party_settings: {  }
   field_student_region:
     type: entity_reference_autocomplete
-    weight: 17
+    weight: 18
     region: content
     settings:
       match_operator: CONTAINS
@@ -248,33 +253,33 @@ content:
     third_party_settings: {  }
   field_student_regional_score:
     type: number
-    weight: 20
+    weight: 21
     region: content
     settings:
       placeholder: ''
     third_party_settings: {  }
   field_student_required_documents:
     type: options_buttons
-    weight: 24
+    weight: 25
     region: content
     settings: {  }
     third_party_settings: {  }
   field_student_semester_score:
     type: number
-    weight: 21
+    weight: 22
     region: content
     settings:
       placeholder: ''
     third_party_settings: {  }
   field_student_sms_channel:
     type: options_buttons
-    weight: 11
+    weight: 12
     region: content
     settings: {  }
     third_party_settings: {  }
   field_student_transcript_file:
     type: file_generic
-    weight: 26
+    weight: 27
     region: content
     settings:
       progress_indicator: throbber
@@ -288,7 +293,6 @@ content:
       preview_image_style: thumbnail
     third_party_settings: {  }
 hidden:
-  account: true
   contact: true
   field_user_branch: true
   field_user_full_name: true

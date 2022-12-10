@@ -4,9 +4,9 @@ status: true
 dependencies:
   config:
     - core.entity_form_mode.user.branch_administrator
-    - field.field.user.user.field_bac_general_score
     - field.field.user.user.field_student_address
     - field.field.user.user.field_student_bac_field
+    - field.field.user.user.field_student_bac_general_score
     - field.field.user.user.field_student_bac_type
     - field.field.user.user.field_student_birth_date
     - field.field.user.user.field_student_birth_place
@@ -54,7 +54,7 @@ content:
     third_party_settings: {  }
   field_user_branch:
     type: entity_reference_autocomplete
-    weight: 2
+    weight: 3
     region: content
     settings:
       match_operator: CONTAINS
@@ -64,7 +64,7 @@ content:
     third_party_settings: {  }
   field_user_full_name:
     type: string_textfield
-    weight: 0
+    weight: 2
     region: content
     settings:
       size: 60
@@ -72,7 +72,7 @@ content:
     third_party_settings: {  }
   user_picture:
     type: image_image
-    weight: 3
+    weight: 0
     region: content
     settings:
       progress_indicator: throbber
@@ -80,9 +80,9 @@ content:
     third_party_settings: {  }
 hidden:
   contact: true
-  field_bac_general_score: true
   field_student_address: true
   field_student_bac_field: true
+  field_student_bac_general_score: true
   field_student_bac_type: true
   field_student_birth_date: true
   field_student_birth_place: true

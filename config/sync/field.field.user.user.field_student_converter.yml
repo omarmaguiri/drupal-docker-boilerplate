@@ -17,7 +17,7 @@ translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
-  handler: 'default:user'
+  handler: tawjeeh_people_advanced_user_selection
   handler_settings:
     target_bundles: null
     sort:
