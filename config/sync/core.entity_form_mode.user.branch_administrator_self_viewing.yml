@@ -1,0 +1,10 @@
+uuid: 90d295ec-d977-483e-998a-335b74cd22e0
+langcode: en
+status: true
+dependencies:
+  module:
+    - user
+id: user.branch_administrator_self_viewing
+label: 'Branch administrator self viewing'
+targetEntityType: user
+cache: true
