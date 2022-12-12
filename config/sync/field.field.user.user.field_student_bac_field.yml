@@ -1,0 +1,30 @@
+uuid: 83f0a34c-9be4-4095-bb0d-b714f3dcff1f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_student_bac_field
+    - taxonomy.vocabulary.bac_fields
+  module:
+    - user
+id: user.user.field_student_bac_field
+field_name: field_student_bac_field
+entity_type: user
+bundle: user
+label: 'Baccalaureate field'
+description: 'The student''s baccalaureate field.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      bac_fields: bac_fields
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

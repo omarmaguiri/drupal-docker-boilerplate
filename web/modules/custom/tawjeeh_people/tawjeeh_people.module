@@ -1,0 +1,331 @@
+<?php
+
+use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Access\AccessResultForbidden;
+use Drupal\Core\Access\AccessResultNeutral;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Session\AccountInterface;
+use Drupal\user\Entity\User;
+use Drupal\user\UserInterface;
+
+
+/**
+ * Implements hook_ENTITY_TYPE_access().
+ *
+ * @param UserInterface $user
+ * @param string $operation
+ * @param AccountInterface $account
+ * @return AccessResult|AccessResultForbidden|AccessResultNeutral
+ */
+function tawjeeh_people_user_access(UserInterface $user, string $operation, AccountInterface $account): AccessResult|AccessResultForbidden|AccessResultNeutral {
+  if (in_array($operation, ['update', 'delete']) && $user->id() !== $account->id()) {
+    $currentUser = User::load($account->id());
+    return AccessResult::forbiddenIf(
+      in_array('branch_agent', $account->getRoles())
+      && (!in_array('student', $user->getRoles()) || $user->field_student_converter->entity !== $currentUser)
+      || in_array('branch_administrator', $account->getRoles())
+      && (!array_intersect(['branch_agent', 'student'], $user->getRoles()) || $user->field_user_branch->entity !== $currentUser->field_user_branch->entity)
+    );
+  }
+
+  return AccessResult::neutral();
+}
+
+/**
+ * Implements hook_user_presave().
+ *
+ * @param UserInterface $user
+ * @return void
+ */
+function tawjeeh_people_user_presave(UserInterface $user): void {
+  if (!$user->isNew()) {
+    return;
+  }
+
+  $currentUser = User::load(\Drupal::currentUser()->id());
+  if (in_array('branch_administrator', \Drupal::currentUser()->getRoles())) {
+    $user->addRole('branch_agent');
+    $user->set('field_user_branch', $currentUser->field_user_branch->entity);
+    $user->setPassword($user->getEmail());
+    return;
+  }
+
+  if (in_array('branch_agent', \Drupal::currentUser()->getRoles())) {
+    $user->addRole('student');
+    if (!$user->field_student_converter->entity) {
+      $user->set('field_student_converter', $currentUser);
+    }
+    $user->set('field_user_branch', $user->field_student_converter->entity->field_user_branch->entity);
+  }
+
+//  $pass = \Drupal::service('password_generator')->generate(8);
+//  $user->setPassword($pass);
+//  dd(user_pass_reset_url(User::load(15)));
+}
+
+/**
+ * Implements hook_entity_form_mode_alter().
+ *
+ * @param string $form_mode
+ * @param EntityInterface $entity
+ * @return void
+ */
+function tawjeeh_people_entity_form_mode_alter(string &$form_mode, EntityInterface $entity): void {
+  if (!$entity instanceof  UserInterface) {
+    return;
+  }
+
+  if (!$entity->isNew() && $form_modes = array_intersect(['branch_administrator', 'branch_agent', 'student'], $entity->getRoles())) {
+    $form_mode = end($form_modes);
+    if (\Drupal::currentUser()->id() === $entity->id()) {
+      $entity_form_modes = \Drupal::service('entity_display.repository')->getFormModes($entity->getEntityType()->id());
+      if (array_key_exists($form_mode . '_self_viewing', $entity_form_modes)) {
+        $form_mode = $form_mode . '_self_viewing';
+        return;
+      }
+    }
+    return;
+  }
+
+  $roles = [
+    'branch_administrator' => 'branch_agent',
+    'branch_agent' => 'student',
+  ];
+  foreach ($roles as $parent => $child) {
+    if (in_array($parent, \Drupal::currentUser()->getRoles())) {
+      $form_mode = $child;
+      return;
+    }
+  }
+
+  if ($entity->isNew()) {
+    $form_mode = 'branch_administrator';
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ *
+ * @param array $form
+ * @param FormStateInterface $form_state
+ * @param string $form_id
+ * @return void
+ */
+function tawjeeh_people_form_alter(array &$form, FormStateInterface $form_state, string $form_id): void {
+  if (!in_array($form_id, ['user_form', 'user_register_form'])) {
+    return;
+  }
+
+  $ignored_fields = ['mail', 'name'];
+  if (\Drupal::currentUser()->id() === $form_state->getFormObject()->getEntity()->id()) {
+    $ignored_fields[] = 'pass';
+  }
+  if (array_intersect(['branch_administrator', 'branch_agent'], \Drupal::currentUser()->getRoles())) {
+    $fields = array_diff(array_filter(array_keys($form['account']), fn ($field) => !str_starts_with($field, '#')), $ignored_fields);
+    foreach ($fields as $field) {
+      $form['account'][$field]['#required'] = FALSE;
+      $form['account'][$field]['#access'] = FALSE;
+    }
+  }
+
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * @param array $form
+ * @param FormStateInterface $form_state
+ * @param string $form_id
+ * @return void
+ */
+function tawjeeh_people_form_user_register_form_alter(array &$form, FormStateInterface $form_state, string $form_id): void {
+  if (in_array('administrator', \Drupal::currentUser()->getRoles())) {
+    if (array_key_exists('field_user_branch', $form)) {
+      $form['field_user_branch']['#states'] = [
+        'visible' => [
+          [ ':input[name="roles[branch_agent]"]' => [ 'checked' => TRUE ] ],
+          [ ':input[name="roles[branch_administrator]"]' => [ 'checked' => TRUE ] ],
+        ],
+      ];
+      $form['field_user_branch']['widget'][0]['target_id']['#states'] = [
+        'required' => [
+          [ ':input[name="roles[branch_agent]"]' => [ 'checked' => TRUE ] ],
+          [ ':input[name="roles[branch_administrator]"]' => [ 'checked' => TRUE ] ],
+        ],
+      ];
+    }
+  }
+
+  $form['account']['name']['#required'] = FALSE;
+  $form['account']['name']['#access'] = FALSE;
+  $form['account']['mail']['#required'] = TRUE;
+  array_unshift($form['#validate'], 'tawjeeh_people_prepare_form_user_values');
+  $form['#validate'][] = 'tawjeeh_people_form_user_post_validate';
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * @param array $form
+ * @param FormStateInterface $form_state
+ * @return void
+ */
+function tawjeeh_people_form_user_form_alter(array &$form, FormStateInterface $form_state): void {
+  if (in_array('student', \Drupal::currentUser()->getRoles())) {
+    $form['account']['mail']['#disabled'] = TRUE;
+  }
+  $form['account']['name']['#required'] = FALSE;
+  $form['account']['name']['#access'] = FALSE;
+  $form['account']['mail']['#required'] = TRUE;
+  array_unshift($form['#validate'], 'tawjeeh_people_prepare_form_user_values');
+}
+
+/**
+ * Copy the 'mail' field to the 'name' field before form validation.
+ *
+ * @param array $form
+ * @param FormStateInterface $form_state
+ */
+function tawjeeh_people_prepare_form_user_values(array &$form, FormStateInterface $form_state): void {
+  $email = $form_state->getValue('mail');
+  $form_state->setValue('name', $email);
+}
+
+/**
+ * Remove the errors related to 'name' field.
+ *
+ * @param array $form
+ * @param FormStateInterface $form_state
+ */
+function tawjeeh_people_form_user_post_validate(array &$form, FormStateInterface $form_state) {
+  $errors = $form_state->getErrors();
+  unset($errors['name']);
+  $form_state->clearErrors();
+  foreach($errors as $field => $value) {
+    $form_state->setErrorByName($field, $value);
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * @param array $form
+ * @param FormStateInterface $form_state
+ * @return void
+ */
+function tawjeeh_people_form_user_login_form_alter(array &$form, FormStateInterface $form_state): void {
+//  $form_state->setRedirectUrl(\Drupal\Core\Url::fromRoute('view.tawjeeh_people_students_view.page'));
+  $form['name']['#title'] = t('Email address');
+  $form['name']['#description'] = t('');
+  $form['pass']['#description'] = t('');
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ * @param array $form
+ * @param FormStateInterface $form_state
+ * @return void
+ */
+function tawjeeh_people_form_user_pass_alter(array &$form, FormStateInterface $form_state): void {
+  $form['name']['#title'] = t('Email address');
+}
+
+/**
+ * Implements hook_preprocess_menu().
+ *
+ * @param array $variables
+ * @return void
+ */
+function tawjeeh_people_preprocess_menu(array &$variables): void {
+  if (in_array('administrator', \Drupal::currentUser()->getRoles())) {
+    unset(
+      $variables['items']['tawjeeh_people.students'],
+      $variables['items']['tawjeeh_people.agents'],
+    );
+    return;
+  }
+  if (in_array('content_editor', \Drupal::currentUser()->getRoles())) {
+    unset(
+      $variables['items']['admin_toolbar_tools.help']['below']['system.admin_index'],
+      $variables['items']['tawjeeh_people.students'],
+      $variables['items']['tawjeeh_people.agents'],
+      $variables['items']['system.admin_structure'],
+      $variables['items']['system.admin_config'],
+      $variables['items']['help.main'],
+    );
+    return;
+  }
+  unset(
+    $variables['items']['admin_toolbar_tools.help']['below']['system.admin_index'],
+    $variables['items']['system.admin_structure'],
+    $variables['items']['system.admin_config'],
+    $variables['items']['help.main'],
+  );
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ *
+ * @param array $variables
+ * @return void
+ */
+function tawjeeh_people_preprocess_page_title(array &$variables): void {
+  if ('user.admin_create' !== \Drupal::routeMatch()->getRouteName()) {
+    return;
+  }
+  if (in_array('branch_administrator', \Drupal::currentUser()->getRoles())) {
+    $variables['title'] = t('Add agent');
+    return;
+  }
+  if (in_array('branch_agent', \Drupal::currentUser()->getRoles())) {
+    $variables['title'] = t('Add student');
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ *
+ * @param array $variables
+ * @return void
+ */
+function tawjeeh_people_preprocess_html(array &$variables): void {
+  if ('user.admin_create' !== \Drupal::routeMatch()->getRouteName()) {
+    return;
+  }
+  if (in_array('branch_administrator', \Drupal::currentUser()->getRoles())) {
+    $variables['head_title']['title'] = t('Add agent');
+    return;
+  }
+  if (in_array('branch_agent', \Drupal::currentUser()->getRoles())) {
+    $variables['head_title']['title'] = t('Add student');
+  }
+}
+
+/**
+ * Implements hook_user_format_name_alter().
+ *
+ * @param string $name
+ * @param AccountInterface $account
+ * @return void
+ */
+function tawjeeh_people_user_format_name_alter(string &$name, AccountInterface $account): void {
+  $user = $account instanceof UserInterface ? $account : User::load($account->id());
+  if ($user->field_user_full_name->value) {
+    $name = $user->field_user_full_name->value;
+    return;
+  }
+  if ($user->field_student_last_name->value && $user->field_student_first_name->value) {
+    $name = sprintf('%s %s', $user->field_student_last_name->value, $user->field_student_first_name->value);
+  }
+}
+
+/**
+ * Implements hook_toolbar_alter()
+ *
+ * @param array $items
+ * @return void
+ */
+function tawjeeh_people_toolbar_alter(array &$items) {
+  $items['administration']['#attached']['library'][] = 'tawjeeh_people/toolbar';
+}

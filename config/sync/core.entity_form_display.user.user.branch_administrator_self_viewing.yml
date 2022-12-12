@@ -1,0 +1,104 @@
+uuid: d590470d-d881-497d-9260-2dfa4f84d905
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.user.branch_administrator_self_viewing
+    - field.field.user.user.field_student_address
+    - field.field.user.user.field_student_bac_field
+    - field.field.user.user.field_student_bac_general_score
+    - field.field.user.user.field_student_bac_type
+    - field.field.user.user.field_student_birth_date
+    - field.field.user.user.field_student_birth_place
+    - field.field.user.user.field_student_cin
+    - field.field.user.user.field_student_cin_file
+    - field.field.user.user.field_student_city
+    - field.field.user.user.field_student_converter
+    - field.field.user.user.field_student_coupon
+    - field.field.user.user.field_student_first_name
+    - field.field.user.user.field_student_first_name_arabic
+    - field.field.user.user.field_student_gender
+    - field.field.user.user.field_student_high_school_city
+    - field.field.user.user.field_student_high_school_name
+    - field.field.user.user.field_student_last_name
+    - field.field.user.user.field_student_last_name_arabic
+    - field.field.user.user.field_student_massar_code
+    - field.field.user.user.field_student_national_score
+    - field.field.user.user.field_student_parent_phone
+    - field.field.user.user.field_student_phone
+    - field.field.user.user.field_student_promotion
+    - field.field.user.user.field_student_region
+    - field.field.user.user.field_student_regional_score
+    - field.field.user.user.field_student_required_documents
+    - field.field.user.user.field_student_semester_score
+    - field.field.user.user.field_student_sms_channel
+    - field.field.user.user.field_student_transcript_file
+    - field.field.user.user.field_user_branch
+    - field.field.user.user.field_user_full_name
+    - field.field.user.user.user_picture
+    - image.style.thumbnail
+  module:
+    - image
+    - user
+_core:
+  default_config_hash: FaQ9Ptcpxpg30AtiqRDtl_8zbJArHP1LPfug_s59TOA
+id: user.user.branch_administrator_self_viewing
+targetEntityType: user
+bundle: user
+mode: branch_administrator_self_viewing
+content:
+  account:
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_user_full_name:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  user_picture:
+    type: image_image
+    weight: 0
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+hidden:
+  contact: true
+  field_student_address: true
+  field_student_bac_field: true
+  field_student_bac_general_score: true
+  field_student_bac_type: true
+  field_student_birth_date: true
+  field_student_birth_place: true
+  field_student_cin: true
+  field_student_cin_file: true
+  field_student_city: true
+  field_student_converter: true
+  field_student_coupon: true
+  field_student_first_name: true
+  field_student_first_name_arabic: true
+  field_student_gender: true
+  field_student_high_school_city: true
+  field_student_high_school_name: true
+  field_student_last_name: true
+  field_student_last_name_arabic: true
+  field_student_massar_code: true
+  field_student_national_score: true
+  field_student_parent_phone: true
+  field_student_phone: true
+  field_student_promotion: true
+  field_student_region: true
+  field_student_regional_score: true
+  field_student_required_documents: true
+  field_student_semester_score: true
+  field_student_sms_channel: true
+  field_student_transcript_file: true
+  field_user_branch: true
+  language: true
+  timezone: true

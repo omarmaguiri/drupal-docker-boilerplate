@@ -1,0 +1,20 @@
+uuid: 05e648be-928a-4a79-a1ae-8a85b7de9855
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_student_phone
+  module:
+    - user
+id: user.user.field_student_phone
+field_name: field_student_phone
+entity_type: user
+bundle: user
+label: 'Personal phone number'
+description: 'The student''s personal phone number.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

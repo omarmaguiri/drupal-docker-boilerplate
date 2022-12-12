@@ -1,0 +1,21 @@
+uuid: 320a5b59-ef68-47bf-af97-565a4122fffe
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_student_birth_date
+  module:
+    - datetime
+    - user
+id: user.user.field_student_birth_date
+field_name: field_student_birth_date
+entity_type: user
+bundle: user
+label: 'Birth date'
+description: 'The student''s birth date.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

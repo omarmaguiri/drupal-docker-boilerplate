@@ -1,0 +1,14 @@
+uuid: 7b0f7d03-bec3-46bc-9397-668e6de92b4b
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.branch_administrator
+  module:
+    - user
+id: user_add_role_action.branch_administrator
+label: 'Add the Branch_administrator role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: branch_administrator

@@ -1,0 +1,21 @@
+uuid: 31915359-793d-4fa6-91a7-4658635e7e6d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_student_sms_channel
+  module:
+    - options
+    - user
+id: user.user.field_student_sms_channel
+field_name: field_student_sms_channel
+entity_type: user
+bundle: user
+label: 'Main SMS channel'
+description: 'What phone number should be used to receive SMS.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,8 @@
+uuid: 39483315-abaf-42d5-99ea-c5e3fc22f93e
+langcode: en
+status: true
+dependencies: {  }
+name: Promotions
+vid: promotions
+description: 'Company registration promotions.'
+weight: 0

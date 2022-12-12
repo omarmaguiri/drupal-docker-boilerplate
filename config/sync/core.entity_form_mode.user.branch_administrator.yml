@@ -1,0 +1,10 @@
+uuid: 740e01f6-f1a9-4195-b521-72cbaa727bd5
+langcode: en
+status: true
+dependencies:
+  module:
+    - user
+id: user.branch_administrator
+label: 'Branch administrator'
+targetEntityType: user
+cache: true

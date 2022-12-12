@@ -1,0 +1,17 @@
+uuid: 770ccb78-723e-412f-940c-350bbc408eac
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+    - toolbar
+id: branch_agent
+label: 'Branch agent'
+weight: -6
+is_admin: null
+permissions:
+  - 'access administration pages'
+  - 'access toolbar'
+  - 'access user profiles'
+  - 'administer users'
+  - 'view the administration theme'

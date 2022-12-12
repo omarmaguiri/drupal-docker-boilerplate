@@ -1,0 +1,36 @@
+uuid: 5a5ef94c-ed20-4089-8121-4ac9e5440fa9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_student_converter
+  module:
+    - user
+id: user.user.field_student_converter
+field_name: field_student_converter
+entity_type: user
+bundle: user
+label: 'Converted by'
+description: 'The agent responsible for converting the student.<br><i>to be filled <strong>only</strong> if the student was converted by an another branch agent.</i>'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: tawjeeh_people_advanced_user_selection
+  handler_settings:
+    target_bundles: null
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    filter:
+      type: role
+      role:
+        branch_agent: branch_agent
+        content_editor: '0'
+        student: '0'
+        branch_administrator: '0'
+        administrator: '0'
+    include_anonymous: false
+field_type: entity_reference

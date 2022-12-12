@@ -1,0 +1,20 @@
+uuid: f8d54755-2b60-4c8e-b8e3-a69d3bc7b3d1
+langcode: en
+status: true
+dependencies:
+  module:
+    - taxonomy
+    - user
+id: user.field_student_bac_field
+field_name: field_student_bac_field
+entity_type: user
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,20 @@
+uuid: bf08f2be-cb98-497b-ae20-114ffb0656b3
+langcode: en
+status: true
+dependencies:
+  module:
+    - user
+id: user.field_student_national_score
+field_name: field_student_national_score
+entity_type: user
+type: decimal
+settings:
+  precision: 10
+  scale: 2
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

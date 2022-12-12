@@ -1,0 +1,30 @@
+uuid: e7a64d79-027d-4dbb-a81a-03d6738ebeb8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_student_city
+    - taxonomy.vocabulary.cities
+  module:
+    - user
+id: user.user.field_student_city
+field_name: field_student_city
+entity_type: user
+bundle: user
+label: City
+description: 'The student''s city.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      cities: cities
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,27 @@
+uuid: 224c1877-d74c-4cb8-9222-651b5b72cde4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_student_cin_file
+  module:
+    - file
+    - user
+id: user.user.field_student_cin_file
+field_name: field_student_cin_file
+entity_type: user
+bundle: user
+label: 'CIN legalized'
+description: 'The student''s legalized CIN document.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: upload/students
+  file_extensions: 'pdf png'
+  max_filesize: ''
+  description_field: false
+field_type: file

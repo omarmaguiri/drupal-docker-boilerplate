@@ -1,0 +1,20 @@
+uuid: a573188f-61e7-432f-8a8d-5a44d4115d97
+langcode: en
+status: true
+dependencies:
+  module:
+    - taxonomy
+    - user
+id: user.field_user_branch
+field_name: field_user_branch
+entity_type: user
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,20 @@
+uuid: 4ffe9171-94b8-4baf-ba00-910157ca0e29
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_student_first_name_arabic
+  module:
+    - user
+id: user.user.field_student_first_name_arabic
+field_name: field_student_first_name_arabic
+entity_type: user
+bundle: user
+label: 'First name (arabic)'
+description: 'The student''s first name in arabic.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

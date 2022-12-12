@@ -2,6 +2,8 @@ uuid: 9a4de7e2-931a-48bf-8d30-6eaf394082e3
 langcode: en
 status: true
 dependencies:
+  config:
+    - user.role.administrator
   module:
     - user
 _core:
@@ -490,9 +492,10 @@ display:
           sort_asc_label: Asc
           sort_desc_label: Desc
       access:
-        type: perm
+        type: role
         options:
-          perm: 'administer users'
+          role:
+            administrator: administrator
       cache:
         type: tag
       empty:
@@ -890,7 +893,7 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
-        - user.permissions
+        - user.roles
       tags: {  }
   page_1:
     id: page_1
@@ -923,5 +926,5 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
-        - user.permissions
+        - user.roles
       tags: {  }

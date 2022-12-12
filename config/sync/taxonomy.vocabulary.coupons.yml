@@ -1,0 +1,8 @@
+uuid: 6f253cb1-4c6e-4104-abe4-5826960bc304
+langcode: en
+status: true
+dependencies: {  }
+name: Coupons
+vid: coupons
+description: 'Company registration coupons.'
+weight: 0

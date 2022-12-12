@@ -3,10 +3,44 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.user.user.field_student_address
+    - field.field.user.user.field_student_bac_field
+    - field.field.user.user.field_student_bac_general_score
+    - field.field.user.user.field_student_bac_type
+    - field.field.user.user.field_student_birth_date
+    - field.field.user.user.field_student_birth_place
+    - field.field.user.user.field_student_cin
+    - field.field.user.user.field_student_cin_file
+    - field.field.user.user.field_student_city
+    - field.field.user.user.field_student_converter
+    - field.field.user.user.field_student_coupon
+    - field.field.user.user.field_student_first_name
+    - field.field.user.user.field_student_first_name_arabic
+    - field.field.user.user.field_student_gender
+    - field.field.user.user.field_student_high_school_city
+    - field.field.user.user.field_student_high_school_name
+    - field.field.user.user.field_student_last_name
+    - field.field.user.user.field_student_last_name_arabic
+    - field.field.user.user.field_student_massar_code
+    - field.field.user.user.field_student_national_score
+    - field.field.user.user.field_student_parent_phone
+    - field.field.user.user.field_student_phone
+    - field.field.user.user.field_student_promotion
+    - field.field.user.user.field_student_region
+    - field.field.user.user.field_student_regional_score
+    - field.field.user.user.field_student_required_documents
+    - field.field.user.user.field_student_semester_score
+    - field.field.user.user.field_student_sms_channel
+    - field.field.user.user.field_student_transcript_file
+    - field.field.user.user.field_user_branch
+    - field.field.user.user.field_user_full_name
     - field.field.user.user.user_picture
     - image.style.thumbnail
   module:
+    - datetime
+    - file
     - image
+    - options
     - user
 _core:
   default_config_hash: mZLyuWM9CQx2ZJVqFGSbzgFnHzudVbHBYmdU256A5Wk
@@ -15,18 +49,276 @@ targetEntityType: user
 bundle: user
 mode: default
 content:
-  member_for:
+  field_student_address:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 15
+    region: content
+  field_student_bac_field:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 18
+    region: content
+  field_student_bac_general_score:
+    type: number_decimal
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 34
+    region: content
+  field_student_bac_type:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 16
+    region: content
+  field_student_birth_date:
+    type: datetime_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 10
+    region: content
+  field_student_birth_place:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 11
+    region: content
+  field_student_cin:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 9
+    region: content
+  field_student_cin_file:
+    type: file_default
+    label: above
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    weight: 28
+    region: content
+  field_student_city:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 20
+    region: content
+  field_student_converter:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 32
+    region: content
+  field_student_coupon:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 31
+    region: content
+  field_student_first_name:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
     weight: 5
+    region: content
+  field_student_first_name_arabic:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_student_gender:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 8
+    region: content
+  field_student_high_school_city:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 21
+    region: content
+  field_student_high_school_name:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 22
+    region: content
+  field_student_last_name:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_student_last_name_arabic:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  field_student_massar_code:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 17
+    region: content
+  field_student_national_score:
+    type: number_decimal
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 24
+    region: content
+  field_student_parent_phone:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 13
+    region: content
+  field_student_phone:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 12
+    region: content
+  field_student_promotion:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 30
+    region: content
+  field_student_region:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 19
+    region: content
+  field_student_regional_score:
+    type: number_decimal
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 23
+    region: content
+  field_student_required_documents:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 27
+    region: content
+  field_student_semester_score:
+    type: number_decimal
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 25
+    region: content
+  field_student_sms_channel:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 14
+    region: content
+  field_student_transcript_file:
+    type: file_default
+    label: above
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    weight: 29
+    region: content
+  field_user_branch:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_user_full_name:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  member_for:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
     region: content
   user_picture:
     type: image
     label: hidden
     settings:
-      image_style: thumbnail
       image_link: content
+      image_style: thumbnail
       image_loading:
         attribute: lazy
     third_party_settings: {  }
-    weight: 0
+    weight: 2
     region: content
 hidden: {  }

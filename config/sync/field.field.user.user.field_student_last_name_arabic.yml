@@ -1,0 +1,20 @@
+uuid: d1a7070f-1c82-4526-83f6-358f92cf408a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_student_last_name_arabic
+  module:
+    - user
+id: user.user.field_student_last_name_arabic
+field_name: field_student_last_name_arabic
+entity_type: user
+bundle: user
+label: 'Last name (arabic)'
+description: 'The student''s last name in arabic.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

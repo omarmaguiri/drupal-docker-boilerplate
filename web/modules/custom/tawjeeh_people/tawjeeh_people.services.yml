@@ -1,0 +1,7 @@
+services:
+  tawjeeh_people.autocomplete_matcher:
+    class: Drupal\tawjeeh_people\Entity\UserAutocompleteMatcher
+    arguments: ['@plugin.manager.entity_reference_selection']
+    public: false
+    decorates: entity.autocomplete_matcher
+    decoration_priority: 1

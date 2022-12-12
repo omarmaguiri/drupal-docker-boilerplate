@@ -1,0 +1,14 @@
+uuid: 430efc18-9387-404c-8b30-9e77ab0f4543
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.branch_agent
+  module:
+    - user
+id: user_add_role_action.branch_agent
+label: 'Add the Branch_agent role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: branch_agent

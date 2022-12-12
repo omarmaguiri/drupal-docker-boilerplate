@@ -1,0 +1,21 @@
+uuid: f68f6e7e-4585-4abc-a450-80d971210bd2
+langcode: en
+status: true
+dependencies:
+  module:
+    - user
+id: user.field_student_cin
+field_name: field_student_cin
+entity_type: user
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

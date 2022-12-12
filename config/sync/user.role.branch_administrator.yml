@@ -1,0 +1,17 @@
+uuid: f19b6861-3226-4755-aab5-d5a23ca79df8
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+    - toolbar
+id: branch_administrator
+label: 'Branch administrator'
+weight: -5
+is_admin: null
+permissions:
+  - 'access administration pages'
+  - 'access toolbar'
+  - 'access user profiles'
+  - 'administer users'
+  - 'view the administration theme'

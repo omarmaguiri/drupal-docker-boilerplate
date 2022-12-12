@@ -1,0 +1,21 @@
+uuid: 42123570-47a7-4071-985b-3bf616f0a837
+langcode: en
+status: true
+dependencies:
+  module:
+    - user
+id: user.field_student_high_school_name
+field_name: field_student_high_school_name
+entity_type: user
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

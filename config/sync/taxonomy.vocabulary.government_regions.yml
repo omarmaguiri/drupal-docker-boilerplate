@@ -1,0 +1,8 @@
+uuid: baa17bb5-270b-4557-a26a-fd7e3292c90c
+langcode: en
+status: true
+dependencies: {  }
+name: Regions
+vid: government_regions
+description: 'The moroccan government established regions.'
+weight: 0
