@@ -1,0 +1,5 @@
+name: Tawjeeh Sup People
+type: module
+description: Provides additional functionality for user management system.
+package: Custom
+core_version_requirement: ^9 || ^10

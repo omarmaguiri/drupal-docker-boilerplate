@@ -1,0 +1,31 @@
+tawjeeh_people.students:
+  title: Students
+  description: 'Find and manage students.'
+  menu_name: Students
+  route_name: view.tawjeeh_people_students_view.page
+  parent: system.admin
+  weight: 0
+
+tawjeeh_people.students.add:
+  title: Add Student
+  description: 'Add a new student.'
+  menu_name: Add Student
+  route_name: user.admin_create
+  parent: tawjeeh_people.students
+  weight: 0
+
+tawjeeh_people.agents:
+  title: Agents
+  description: 'Find and manage agents.'
+  menu_name: Agents
+  route_name: view.tawjeeh_people_agents_view.page
+  parent: system.admin
+  weight: 0
+
+tawjeeh_people.agents.add:
+  title: Add Agent
+  description: 'Add a new agent.'
+  menu_name: Add Agent
+  route_name: user.admin_create
+  parent: tawjeeh_people.agents
+  weight: 0

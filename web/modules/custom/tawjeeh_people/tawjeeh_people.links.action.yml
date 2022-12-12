@@ -1,0 +1,11 @@
+tawjeeh_people.add_student:
+  route_name: user.admin_create
+  title: 'Add student'
+  appears_on:
+    - view.tawjeeh_people_students_view.page
+
+tawjeeh_people.add_agent:
+  route_name: user.admin_create
+  title: 'Add agent'
+  appears_on:
+    - view.tawjeeh_people_agents_view.page
