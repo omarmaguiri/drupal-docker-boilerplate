@@ -21,7 +21,7 @@ class ApiBasicAuthenticationProvider implements AuthenticationProviderInterface
   public function applies(Request $request)
   {
     return
-      $this->routeProvider->getRouteByName(self::LOGIN_ROUTE_NANE)->getPath() === $request->getRequestUri()
+      str_starts_with($request->getRequestUri(), $this->routeProvider->getRouteByName(self::LOGIN_ROUTE_NANE)->getPath())
       && $request->headers->has('Authorization')
       && preg_match('#^Basic (.+)$#', $request->headers->get('Authorization'));
   }
@@ -37,10 +37,13 @@ class ApiBasicAuthenticationProvider implements AuthenticationProviderInterface
       return NULL;
     }
     $uid = $this->userAuth->authenticate($username, $password);
-    if ($uid) {
-      return $this->entityTypeManager->getStorage('user')->load($uid);
+    if (!$uid) {
+      return NULL;
     }
-
-    return NULL;
+    $user = $this->entityTypeManager->getStorage('user')->load($uid);
+    if ($user->isBlocked()) {
+      return NULL;
+    }
+    return $user;
   }
 }
