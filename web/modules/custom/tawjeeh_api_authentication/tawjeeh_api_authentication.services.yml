@@ -1,0 +1,20 @@
+parameters:
+  jwt:
+    private.key: '%app.root%/../config/cert/private.pem'
+    public.key: '%app.root%/../config/cert/public.pem'
+    algo: RS256
+    claims:
+      iss: tawjeeh.sup
+      aud: tawjeeh.sup
+
+services:
+  tawjeeh_api_authentication.authentication.api_jwt_auth:
+    class: Drupal\tawjeeh_api_authentication\Authentication\ApiJwtAuthenticationProvider
+    arguments: ['%jwt%', '@router.route_provider', '@entity_type.manager']
+    tags:
+      - { name: authentication_provider, provider_id: 'api_jwt_auth', priority: 10 }
+  tawjeeh_api_authentication.authentication.api_basic_auth:
+    class: Drupal\tawjeeh_api_authentication\Authentication\ApiBasicAuthenticationProvider
+    arguments: ['@router.route_provider', '@entity_type.manager', '@user.auth']
+    tags:
+      - { name: authentication_provider, provider_id: 'api_basic_auth', priority: 10 }
