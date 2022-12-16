@@ -1,0 +1,21 @@
+uuid: c6b2a988-3e32-4dd8-a6e0-f5e28e5c5ca0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_school_description
+    - node.type.school
+  module:
+    - text
+id: node.school.field_school_description
+field_name: field_school_description
+entity_type: node
+bundle: school
+label: Description
+description: 'School''s description.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

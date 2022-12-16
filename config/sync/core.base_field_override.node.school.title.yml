@@ -1,0 +1,18 @@
+uuid: c25acfb5-4d40-4d8a-927f-10a97d74b319
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.school
+id: node.school.title
+field_name: title
+entity_type: node
+bundle: school
+label: Name
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

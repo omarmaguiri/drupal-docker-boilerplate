@@ -1,0 +1,44 @@
+uuid: b71f3ce3-5f81-4dd2-bd4f-24527602a1e0
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.school.field_school_address
+    - field.field.node.school.field_school_category
+    - field.field.node.school.field_school_city
+    - field.field.node.school.field_school_description
+    - field.field.node.school.field_school_email
+    - field.field.node.school.field_school_fields
+    - field.field.node.school.field_school_formations
+    - field.field.node.school.field_school_group
+    - field.field.node.school.field_school_phone
+    - field.field.node.school.field_school_picture
+    - field.field.node.school.field_school_type
+    - field.field.node.school.field_school_website
+    - node.type.school
+  module:
+    - user
+id: node.school.teaser
+targetEntityType: node
+bundle: school
+mode: teaser
+content:
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_school_address: true
+  field_school_category: true
+  field_school_city: true
+  field_school_description: true
+  field_school_email: true
+  field_school_fields: true
+  field_school_formations: true
+  field_school_group: true
+  field_school_phone: true
+  field_school_picture: true
+  field_school_type: true
+  field_school_website: true

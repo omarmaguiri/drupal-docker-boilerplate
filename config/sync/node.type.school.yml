@@ -1,0 +1,17 @@
+uuid: 66b9157d-9096-4a54-996c-0dd4dc0e414a
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: School
+type: school
+description: 'Represents an element of school list.'
+help: ''
+new_revision: false
+preview_mode: 0
+display_submitted: false

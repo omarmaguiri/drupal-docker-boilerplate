@@ -1,0 +1,27 @@
+uuid: 7d5458bf-8585-4fd6-84ef-c7da1e540d6f
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_school_type
+field_name: field_school_type
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: public
+      label: 'Public school'
+    -
+      value: private
+      label: 'Private school'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

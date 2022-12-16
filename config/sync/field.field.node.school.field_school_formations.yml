@@ -1,0 +1,21 @@
+uuid: 64c4e639-e4be-48cc-bf45-8a5ddd8b19ab
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_school_formations
+    - node.type.school
+  module:
+    - text
+id: node.school.field_school_formations
+field_name: field_school_formations
+entity_type: node
+bundle: school
+label: Formations
+description: 'School''s formations.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

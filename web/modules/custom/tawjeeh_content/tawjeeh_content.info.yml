@@ -1,0 +1,8 @@
+name: Tawjeeh Content
+type: module
+description: Create and manage site content.
+package: Custom
+core_version_requirement: ^9 || ^10
+dependencies:
+  - tawjeeh_people
+  - tawjeeh_api_authentication

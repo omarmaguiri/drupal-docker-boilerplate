@@ -1,0 +1,132 @@
+uuid: 5aaa903f-742d-4597-846b-481a31e3941a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.school.field_school_address
+    - field.field.node.school.field_school_category
+    - field.field.node.school.field_school_city
+    - field.field.node.school.field_school_description
+    - field.field.node.school.field_school_email
+    - field.field.node.school.field_school_fields
+    - field.field.node.school.field_school_formations
+    - field.field.node.school.field_school_group
+    - field.field.node.school.field_school_phone
+    - field.field.node.school.field_school_picture
+    - field.field.node.school.field_school_type
+    - field.field.node.school.field_school_website
+    - node.type.school
+  module:
+    - image
+    - link
+    - options
+    - text
+    - user
+id: node.school.default
+targetEntityType: node
+bundle: school
+mode: default
+content:
+  field_school_address:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 107
+    region: content
+  field_school_category:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 109
+    region: content
+  field_school_city:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 106
+    region: content
+  field_school_description:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  field_school_email:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 105
+    region: content
+  field_school_fields:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 111
+    region: content
+  field_school_formations:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 112
+    region: content
+  field_school_group:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 110
+    region: content
+  field_school_phone:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 104
+    region: content
+  field_school_picture:
+    type: image
+    label: above
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 103
+    region: content
+  field_school_type:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  field_school_website:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 108
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden: {  }

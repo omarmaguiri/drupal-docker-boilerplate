@@ -1,0 +1,8 @@
+uuid: ae53ce32-aed2-4ceb-96ec-fa82abe0cd2e
+langcode: en
+status: true
+dependencies: {  }
+name: 'School categories'
+vid: school_categories
+description: 'Used to group schools into categories.'
+weight: 0

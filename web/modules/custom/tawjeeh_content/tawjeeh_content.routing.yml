@@ -1,0 +1,59 @@
+tawjeeh_content.api.schools:
+  path: '/api/schools'
+  defaults:
+    _title: 'Schools'
+    _controller: '\Drupal\tawjeeh_content\Controller\SchoolController::all'
+  requirements:
+    _user_is_logged_in: 'TRUE'
+  options:
+    _auth: [ 'api_jwt_auth' ]
+
+tawjeeh_content.api.schools.get:
+  path: '/api/schools/{school}'
+  defaults:
+    _title: 'School'
+    _controller: '\Drupal\tawjeeh_content\Controller\SchoolController::get'
+  requirements:
+    _user_is_logged_in: 'TRUE'
+  options:
+    parameters:
+      school:
+        type: entity:node
+    _auth: [ 'api_jwt_auth' ]
+
+tawjeeh_content.api.schools_categories:
+  path: '/api/schools/categories'
+  defaults:
+    _title: 'School categories'
+    _controller: '\Drupal\tawjeeh_content\Controller\SchoolController::getCategories'
+  requirements:
+    _user_is_logged_in: 'TRUE'
+  options:
+    _auth: [ 'api_jwt_auth' ]
+
+tawjeeh_content.api.schools_categories.get:
+  path: '/api/schools/categories/{category}'
+  defaults:
+    _title: 'Schools by category'
+    _controller: '\Drupal\tawjeeh_content\Controller\SchoolController::getSchoolsByCategory'
+  requirements:
+    _user_is_logged_in: 'TRUE'
+  options:
+    parameters:
+      category:
+        type: entity:taxonomy_term
+    _auth: [ 'api_jwt_auth' ]
+
+
+tawjeeh_content.api.schools_groups.get:
+  path: '/api/schools/groups/{group}'
+  defaults:
+    _title: 'Schools by group'
+    _controller: '\Drupal\tawjeeh_content\Controller\SchoolController::getSchoolsByGroup'
+  requirements:
+    _user_is_logged_in: 'TRUE'
+  options:
+    parameters:
+      group:
+        type: entity:taxonomy_term
+    _auth: [ 'api_jwt_auth' ]
