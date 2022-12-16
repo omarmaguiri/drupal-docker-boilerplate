@@ -1,0 +1,5 @@
+name: Tawjeeh Api Authentication
+type: module
+description: Implements JWT authentication for API routes.
+package: Custom
+core_version_requirement: ^9 || ^10

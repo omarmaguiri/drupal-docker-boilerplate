@@ -1,0 +1,11 @@
+tawjeeh_api_authentication.login:
+  path: '/api/login'
+  defaults:
+    _title: 'Login'
+    _controller: '\Drupal\tawjeeh_api_authentication\Controller\AuthenticationController::login'
+  requirements:
+    _method: 'GET'
+    _user_is_logged_in: 'TRUE'
+  options:
+    no_cache: 'TRUE'
+    _auth: [ 'api_basic_auth' ]
