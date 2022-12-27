@@ -1,0 +1,19 @@
+uuid: 24dc2dfb-6c68-46a1-b758-1bf477c52456
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_school_phone
+    - node.type.school
+id: node.school.field_school_phone
+field_name: field_school_phone
+entity_type: node
+bundle: school
+label: Phone
+description: 'School''s phone.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

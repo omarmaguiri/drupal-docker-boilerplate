@@ -1,0 +1,8 @@
+uuid: 48dafb53-cae6-49b8-909b-63e9594d61b7
+langcode: en
+status: true
+dependencies: {  }
+name: 'School groups'
+vid: school_groups
+description: 'Used for grouping schools.'
+weight: 0

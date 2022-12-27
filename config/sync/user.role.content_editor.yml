@@ -5,6 +5,7 @@ dependencies:
   config:
     - node.type.article
     - node.type.page
+    - node.type.school
     - taxonomy.vocabulary.tags
   module:
     - comment
@@ -32,17 +33,29 @@ permissions:
   - 'administer url aliases'
   - 'create article content'
   - 'create page content'
+  - 'create school content'
   - 'create terms in tags'
   - 'create url aliases'
+  - 'delete any article content'
+  - 'delete any page content'
+  - 'delete any school content'
   - 'delete article revisions'
   - 'delete own article content'
   - 'delete own page content'
+  - 'delete own school content'
   - 'delete page revisions'
+  - 'delete school revisions'
+  - 'edit any article content'
+  - 'edit any page content'
+  - 'edit any school content'
   - 'edit own article content'
   - 'edit own comments'
   - 'edit own page content'
+  - 'edit own school content'
   - 'edit terms in tags'
   - 'revert all revisions'
+  - 'revert school revisions'
   - 'view all revisions'
   - 'view own unpublished content'
+  - 'view school revisions'
   - 'view the administration theme'

@@ -1,0 +1,19 @@
+uuid: a3ce487f-7dc8-4208-aeb7-4a387fac1331
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_school_address
+    - node.type.school
+id: node.school.field_school_address
+field_name: field_school_address
+entity_type: node
+bundle: school
+label: Address
+description: 'School''s address.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long
