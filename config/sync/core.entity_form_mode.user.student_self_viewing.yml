@@ -1,0 +1,10 @@
+uuid: 45b04a0b-5879-4b55-9ff1-cf03a7198472
+langcode: en
+status: true
+dependencies:
+  module:
+    - user
+id: user.student_self_viewing
+label: 'Student self viewing'
+targetEntityType: user
+cache: true

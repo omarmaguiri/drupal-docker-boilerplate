@@ -1,0 +1,10 @@
+uuid: c61716f2-796c-4561-8cc3-4ec11fd8cd73
+langcode: en
+status: true
+dependencies:
+  module:
+    - user
+id: user.branch_agent_self_viewing
+label: 'Branch agent self viewing'
+targetEntityType: user
+cache: true
