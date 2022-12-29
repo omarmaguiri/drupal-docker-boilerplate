@@ -12,7 +12,7 @@ entity_type: user
 bundle: user
 label: 'Full name'
 description: 'Specify the user''s full name.'
-required: false
+required: true
 translatable: false
 default_value: {  }
 default_value_callback: ''
