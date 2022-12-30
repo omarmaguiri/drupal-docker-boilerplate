@@ -44,7 +44,6 @@ tawjeeh_content.api.schools_categories.get:
         type: entity:taxonomy_term
     _auth: [ 'api_jwt_auth' ]
 
-
 tawjeeh_content.api.schools_groups.get:
   path: '/api/schools/groups/{group}'
   defaults:
@@ -56,4 +55,27 @@ tawjeeh_content.api.schools_groups.get:
     parameters:
       group:
         type: entity:taxonomy_term
+    _auth: [ 'api_jwt_auth' ]
+
+tawjeeh_content.api.preparation-centers:
+  path: '/api/preparation-centers'
+  defaults:
+    _title: 'Preparation centers'
+    _controller: '\Drupal\tawjeeh_content\Controller\PreparationCenterController::all'
+  requirements:
+    _user_is_logged_in: 'TRUE'
+  options:
+    _auth: [ 'api_jwt_auth' ]
+
+tawjeeh_content.api.preparation-centers.get:
+  path: '/api/preparation-centers/{center}'
+  defaults:
+    _title: 'Preparation center'
+    _controller: '\Drupal\tawjeeh_content\Controller\PreparationCenterController::get'
+  requirements:
+    _user_is_logged_in: 'TRUE'
+  options:
+    parameters:
+      center:
+        type: entity:node
     _auth: [ 'api_jwt_auth' ]

@@ -1,0 +1,20 @@
+uuid: a11f545e-5bad-4c3a-adb4-7fa4f64f3823
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - taxonomy
+id: node.field_prep_center_city
+field_name: field_prep_center_city
+entity_type: node
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

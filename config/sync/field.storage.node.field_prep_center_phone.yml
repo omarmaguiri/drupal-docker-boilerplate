@@ -1,0 +1,19 @@
+uuid: 2117efa0-f90d-4cd0-bcd8-105cb70dfe77
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - telephone
+id: node.field_prep_center_phone
+field_name: field_prep_center_phone
+entity_type: node
+type: telephone
+settings: {  }
+module: telephone
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

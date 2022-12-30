@@ -7,15 +7,15 @@ use Drupal\Core\Cache\CacheableMetadata;
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\File\FileUrlGeneratorInterface;
-use Drupal\Core\Url;
 use Drupal\file\Entity\File;
 use Drupal\node\NodeInterface;
 use Drupal\taxonomy\TermInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class SchoolController extends ControllerBase {
 
-  public function __construct(protected FileUrlGeneratorInterface $fileUrlGenerator)
+  public function __construct(protected FileUrlGeneratorInterface $fileUrlGenerator, protected \Drupal\Core\Routing\UrlGeneratorInterface $urlGenerator)
   {
   }
 
@@ -23,24 +23,25 @@ class SchoolController extends ControllerBase {
   {
     return new static(
       $container->get('file_url_generator'),
+      $container->get('url_generator'),
     );
   }
 
   public function get(NodeInterface $school): CacheableJsonResponse
   {
-    $schools = [];
-    if ('school' === $school->getType()) {
-      $schools = $this->schoolToArray($school);
+    if ('school' !== $school->getType()) {
+      throw new NotFoundHttpException();
     }
 
     $cacheMetadata['#cache'] = [
       'tags' => [
-        'node_list:school',
+        'node:' . $school->id(),
+        'taxonomy_term_list:cities',
         'taxonomy_term_list:school_categories',
         'taxonomy_term_list:school_groups',
       ]
     ];
-    return (new CacheableJsonResponse($schools))->addCacheableDependency(CacheableMetadata::createFromRenderArray($cacheMetadata));
+    return (new CacheableJsonResponse($this->schoolNormalize($school)))->addCacheableDependency(CacheableMetadata::createFromRenderArray($cacheMetadata));
   }
 
   public function all(): CacheableJsonResponse
@@ -53,12 +54,13 @@ class SchoolController extends ControllerBase {
       ]);
     $schools = [];
     foreach ($nodes as $node) {
-      $schools[] = $this->schoolToArray($node);
+      $schools[] = $this->schoolNormalize($node);
     }
 
     $cacheMetadata['#cache'] = [
       'tags' => [
         'node_list:school',
+        'taxonomy_term_list:cities',
         'taxonomy_term_list:school_categories',
         'taxonomy_term_list:school_groups',
       ]
@@ -81,7 +83,7 @@ class SchoolController extends ControllerBase {
           $categories[$category->id()] = [
             'id' => $category->id(),
             'name' => $category->label(),
-            '@link' => Url::fromRoute('tawjeeh_content.api.schools_categories.get', ['category' => $category->id()])->toString(TRUE)->getGeneratedUrl(),
+            '@link' => $this->urlGenerator->generateFromRoute('tawjeeh_content.api.schools_categories.get', ['category' => $category->id()], [], TRUE)->getGeneratedUrl(),
             'count' => 1,
           ];
           continue;
@@ -101,15 +103,8 @@ class SchoolController extends ControllerBase {
 
   public function getSchoolsByCategory(TermInterface $category): CacheableJsonResponse
   {
-    $cacheMetadata['#cache'] = [
-      'tags' => [
-        'node_list:school',
-        'taxonomy_term_list:school_categories',
-        'taxonomy_term_list:school_groups',
-      ]
-    ];
     if ('school_categories' !== $category->bundle()) {
-      return (new CacheableJsonResponse())->addCacheableDependency(CacheableMetadata::createFromRenderArray($cacheMetadata));
+      throw new NotFoundHttpException();
     }
 
     $nodes = $this->entityTypeManager()
@@ -123,7 +118,7 @@ class SchoolController extends ControllerBase {
     $schools = ['groups' => [], 'schools' => []];
     foreach ($nodes as $node) {
       if (!$node->get('field_school_group')->entity) {
-        $schools['schools'][] = $this->schoolToArray($node, TRUE);
+        $schools['schools'][] = $this->schoolNormalize($node, TRUE);
         continue;
       }
       $gid = $node->get('field_school_group')->entity->id();
@@ -131,7 +126,7 @@ class SchoolController extends ControllerBase {
         $schools['groups'][$gid] = [
           'id' => $gid,
           'name' => $node->get('field_school_group')->entity->label(),
-          '@link' => Url::fromRoute('tawjeeh_content.api.schools_groups.get', ['group' => $gid])->toString(TRUE)->getGeneratedUrl(),
+          '@link' => $this->urlGenerator->generateFromRoute('tawjeeh_content.api.schools_groups.get', ['group' => $gid], [], TRUE)->getGeneratedUrl(),
           'count' => 1,
         ];
         continue;
@@ -140,6 +135,13 @@ class SchoolController extends ControllerBase {
     }
     $schools['groups'] = array_values($schools['groups']);
 
+    $cacheMetadata['#cache'] = [
+      'tags' => [
+        'node_list:school',
+        'taxonomy_term_list:school_categories',
+        'taxonomy_term_list:school_groups',
+      ]
+    ];
     return (new CacheableJsonResponse($schools))->addCacheableDependency(CacheableMetadata::createFromRenderArray($cacheMetadata));
   }
 
@@ -153,7 +155,7 @@ class SchoolController extends ControllerBase {
       ]
     ];
     if ('school_groups' !== $group->bundle()) {
-      return (new CacheableJsonResponse())->addCacheableDependency(CacheableMetadata::createFromRenderArray($cacheMetadata));
+      throw new NotFoundHttpException();
     }
 
     $nodes = $this->entityTypeManager()
@@ -166,19 +168,26 @@ class SchoolController extends ControllerBase {
 
     $schools = [];
     foreach ($nodes as $node) {
-      $schools[] = $this->schoolToArray($node, TRUE);
+      $schools[] = $this->schoolNormalize($node, TRUE);
     }
 
+    $cacheMetadata['#cache'] = [
+      'tags' => [
+        'node_list:school',
+        'taxonomy_term_list:school_categories',
+        'taxonomy_term_list:school_groups',
+      ]
+    ];
     return (new CacheableJsonResponse($schools))->addCacheableDependency(CacheableMetadata::createFromRenderArray($cacheMetadata));
   }
 
-  private function schoolToArray(EntityInterface $node, bool $compact = FALSE): array
+  private function schoolNormalize(EntityInterface $node, bool $compact = FALSE): array
   {
     if ($compact) {
       return [
         'id' => $node->id(),
         'name' => $node->label(),
-        '@link' => Url::fromRoute('tawjeeh_content.api.schools.get', ['school' => $node->id()])->toString(TRUE)->getGeneratedUrl(),
+        '@link' => $this->urlGenerator->generateFromRoute('tawjeeh_content.api.schools.get', ['school' => $node->id()], [], TRUE)->getGeneratedUrl(),
       ];
     }
     $school = [

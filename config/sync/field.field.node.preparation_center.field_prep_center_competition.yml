@@ -1,0 +1,21 @@
+uuid: d706d80f-b8e4-4c94-92d4-7aeae98b7116
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_prep_center_competition
+    - node.type.preparation_center
+  module:
+    - text
+id: node.preparation_center.field_prep_center_competition
+field_name: field_prep_center_competition
+entity_type: node
+bundle: preparation_center
+label: Competitions
+description: 'Preparation center competitions.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

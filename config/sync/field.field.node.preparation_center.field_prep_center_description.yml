@@ -1,0 +1,21 @@
+uuid: 755954b6-59a4-4cab-8043-e534f768f03f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_prep_center_description
+    - node.type.preparation_center
+  module:
+    - text
+id: node.preparation_center.field_prep_center_description
+field_name: field_prep_center_description
+entity_type: node
+bundle: preparation_center
+label: Description
+description: 'Preparation center description.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

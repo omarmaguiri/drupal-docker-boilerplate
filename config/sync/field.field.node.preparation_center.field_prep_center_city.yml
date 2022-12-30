@@ -1,0 +1,29 @@
+uuid: 8d8f4eb9-3f74-43b5-8c81-178a541d9699
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_prep_center_city
+    - node.type.preparation_center
+    - taxonomy.vocabulary.cities
+id: node.preparation_center.field_prep_center_city
+field_name: field_prep_center_city
+entity_type: node
+bundle: preparation_center
+label: City
+description: 'Preparation center city.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      cities: cities
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

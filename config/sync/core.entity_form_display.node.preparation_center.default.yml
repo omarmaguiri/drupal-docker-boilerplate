@@ -1,0 +1,108 @@
+uuid: aede71e9-b05c-4431-9cbb-1b0159e4e40c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.preparation_center.field_prep_center_city
+    - field.field.node.preparation_center.field_prep_center_competition
+    - field.field.node.preparation_center.field_prep_center_description
+    - field.field.node.preparation_center.field_prep_center_email
+    - field.field.node.preparation_center.field_prep_center_location
+    - field.field.node.preparation_center.field_prep_center_phone
+    - field.field.node.preparation_center.field_prep_center_picture
+    - field.field.node.preparation_center.field_prep_center_whatsapp
+    - image.style.thumbnail
+    - node.type.preparation_center
+  module:
+    - google_map_field
+    - image
+    - telephone
+    - text
+id: node.preparation_center.default
+targetEntityType: node
+bundle: preparation_center
+mode: default
+content:
+  field_prep_center_city:
+    type: entity_reference_autocomplete
+    weight: 5
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_prep_center_competition:
+    type: text_textarea
+    weight: 4
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_prep_center_description:
+    type: text_textarea
+    weight: 3
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_prep_center_email:
+    type: email_default
+    weight: 8
+    region: content
+    settings:
+      placeholder: ''
+      size: 60
+    third_party_settings: {  }
+  field_prep_center_location:
+    type: google_map_field_default
+    weight: 9
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_prep_center_phone:
+    type: telephone_default
+    weight: 6
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_prep_center_picture:
+    type: image_image
+    weight: 0
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+  field_prep_center_whatsapp:
+    type: telephone_default
+    weight: 7
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 2
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  path: true
+  promote: true
+  sticky: true
+  uid: true

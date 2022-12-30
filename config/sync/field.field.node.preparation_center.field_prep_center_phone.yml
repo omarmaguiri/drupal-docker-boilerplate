@@ -1,0 +1,21 @@
+uuid: 13cdc920-1bc2-426b-8e86-097330df1061
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_prep_center_phone
+    - node.type.preparation_center
+  module:
+    - telephone
+id: node.preparation_center.field_prep_center_phone
+field_name: field_prep_center_phone
+entity_type: node
+bundle: preparation_center
+label: 'Phone number'
+description: 'Preparation center phone number.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: telephone
