@@ -1,0 +1,91 @@
+uuid: 8e0c94c5-9cd8-4ebe-9c1f-62130e18b1ec
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.preparation_center.field_prep_center_city
+    - field.field.node.preparation_center.field_prep_center_competition
+    - field.field.node.preparation_center.field_prep_center_description
+    - field.field.node.preparation_center.field_prep_center_email
+    - field.field.node.preparation_center.field_prep_center_location
+    - field.field.node.preparation_center.field_prep_center_phone
+    - field.field.node.preparation_center.field_prep_center_picture
+    - field.field.node.preparation_center.field_prep_center_whatsapp
+    - node.type.preparation_center
+  module:
+    - google_map_field
+    - image
+    - text
+    - user
+id: node.preparation_center.default
+targetEntityType: node
+bundle: preparation_center
+mode: default
+content:
+  field_prep_center_city:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 103
+    region: content
+  field_prep_center_competition:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 104
+    region: content
+  field_prep_center_description:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  field_prep_center_email:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 107
+    region: content
+  field_prep_center_location:
+    type: google_map_field_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 108
+    region: content
+  field_prep_center_phone:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 112
+    region: content
+  field_prep_center_picture:
+    type: image
+    label: above
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 110
+    region: content
+  field_prep_center_whatsapp:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 111
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden: {  }

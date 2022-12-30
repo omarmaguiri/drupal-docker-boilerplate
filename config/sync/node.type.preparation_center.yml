@@ -1,0 +1,17 @@
+uuid: 02357ac9-3e9a-4ad1-884b-ef4db2fe3658
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: 'Preparation center'
+type: preparation_center
+description: 'Represents a center of preparation for competitions.'
+help: ''
+new_revision: false
+preview_mode: 0
+display_submitted: false

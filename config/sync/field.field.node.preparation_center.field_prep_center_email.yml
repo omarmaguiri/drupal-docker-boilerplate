@@ -1,0 +1,19 @@
+uuid: 4d63c0fc-ecec-45fe-a75d-b54eb12d2c09
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_prep_center_email
+    - node.type.preparation_center
+id: node.preparation_center.field_prep_center_email
+field_name: field_prep_center_email
+entity_type: node
+bundle: preparation_center
+label: Email
+description: 'Preparation center email.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: email

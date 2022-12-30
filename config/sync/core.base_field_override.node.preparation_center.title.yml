@@ -1,0 +1,18 @@
+uuid: a09895a3-f434-4171-ad64-0ad9841c9ede
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.preparation_center
+id: node.preparation_center.title
+field_name: title
+entity_type: node
+bundle: preparation_center
+label: Name
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,19 @@
+uuid: fd81a58b-5a3c-4268-86ed-cd8874c5d8bb
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - text
+id: node.field_prep_center_competition
+field_name: field_prep_center_competition
+entity_type: node
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,36 @@
+uuid: 5307f8cc-f7ad-48a1-80f3-84e8bf072503
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.preparation_center.field_prep_center_city
+    - field.field.node.preparation_center.field_prep_center_competition
+    - field.field.node.preparation_center.field_prep_center_description
+    - field.field.node.preparation_center.field_prep_center_email
+    - field.field.node.preparation_center.field_prep_center_location
+    - field.field.node.preparation_center.field_prep_center_phone
+    - field.field.node.preparation_center.field_prep_center_picture
+    - field.field.node.preparation_center.field_prep_center_whatsapp
+    - node.type.preparation_center
+  module:
+    - user
+id: node.preparation_center.teaser
+targetEntityType: node
+bundle: preparation_center
+mode: teaser
+content:
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_prep_center_city: true
+  field_prep_center_competition: true
+  field_prep_center_description: true
+  field_prep_center_email: true
+  field_prep_center_location: true
+  field_prep_center_phone: true
+  field_prep_center_picture: true
+  field_prep_center_whatsapp: true

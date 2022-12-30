@@ -1,0 +1,21 @@
+uuid: b91f32ae-7e5d-4c7f-9ad1-96da8de9d33c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_prep_center_whatsapp
+    - node.type.preparation_center
+  module:
+    - telephone
+id: node.preparation_center.field_prep_center_whatsapp
+field_name: field_prep_center_whatsapp
+entity_type: node
+bundle: preparation_center
+label: 'Whatsapp phone number'
+description: 'Preparation center <strong>Whatsapp</strong> phone number.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: telephone
