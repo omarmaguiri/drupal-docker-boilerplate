@@ -1,0 +1,21 @@
+uuid: ad22e5b6-40c1-419e-9654-edf166dd6770
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_scholarship_additional_inf
+    - node.type.scholarship
+  module:
+    - text
+id: node.scholarship.field_scholarship_additional_inf
+field_name: field_scholarship_additional_inf
+entity_type: node
+bundle: scholarship
+label: 'Additional information'
+description: 'Scholarship''s additional information.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

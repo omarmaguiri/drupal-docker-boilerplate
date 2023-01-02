@@ -12,9 +12,6 @@ use Drupal\node\NodeInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
-/**
- * Returns responses for Tawjeeh Content routes.
- */
 class PreparationCenterController extends ControllerBase {
 
   public function __construct(protected FileUrlGeneratorInterface $fileUrlGenerator)

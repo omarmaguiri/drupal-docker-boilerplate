@@ -1,0 +1,21 @@
+uuid: f418ad68-d904-45ac-96be-b857a7129273
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_scholarship_candidacy_proc
+    - node.type.scholarship
+  module:
+    - text
+id: node.scholarship.field_scholarship_candidacy_proc
+field_name: field_scholarship_candidacy_proc
+entity_type: node
+bundle: scholarship
+label: 'Application procedure'
+description: 'Scholarship''s Application process.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

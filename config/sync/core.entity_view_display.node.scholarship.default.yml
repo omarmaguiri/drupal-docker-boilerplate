@@ -1,0 +1,98 @@
+uuid: 6fc7870d-96a4-49a5-8d1f-52bf8d4c63b6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.scholarship.field_scholarship_additional_inf
+    - field.field.node.scholarship.field_scholarship_attached_docs
+    - field.field.node.scholarship.field_scholarship_candidacy_date
+    - field.field.node.scholarship.field_scholarship_candidacy_proc
+    - field.field.node.scholarship.field_scholarship_candidacy_req
+    - field.field.node.scholarship.field_scholarship_country
+    - field.field.node.scholarship.field_scholarship_description
+    - field.field.node.scholarship.field_scholarship_eligibility
+    - field.field.node.scholarship.field_scholarship_selection_proc
+    - node.type.scholarship
+  module:
+    - country
+    - datetime
+    - file
+    - text
+    - user
+id: node.scholarship.default
+targetEntityType: node
+bundle: scholarship
+mode: default
+content:
+  field_scholarship_additional_inf:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 108
+    region: content
+  field_scholarship_attached_docs:
+    type: file_default
+    label: above
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    weight: 109
+    region: content
+  field_scholarship_candidacy_date:
+    type: datetime_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 107
+    region: content
+  field_scholarship_candidacy_proc:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 105
+    region: content
+  field_scholarship_candidacy_req:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 104
+    region: content
+  field_scholarship_country:
+    type: country_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  field_scholarship_description:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  field_scholarship_eligibility:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 103
+    region: content
+  field_scholarship_selection_proc:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 106
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden: {  }

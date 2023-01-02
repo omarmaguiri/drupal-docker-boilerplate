@@ -1,0 +1,20 @@
+uuid: f58afcf0-2e7b-4e5b-a7f5-764d99c60ae7
+langcode: en
+status: true
+dependencies:
+  module:
+    - country
+    - node
+id: node.field_scholarship_country
+field_name: field_scholarship_country
+entity_type: node
+type: country
+settings:
+  selectable_countries: {  }
+module: country
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

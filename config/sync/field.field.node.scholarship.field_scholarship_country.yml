@@ -1,0 +1,22 @@
+uuid: e861502f-6547-4e9f-a655-b6d92a993cc5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_scholarship_country
+    - node.type.scholarship
+  module:
+    - country
+id: node.scholarship.field_scholarship_country
+field_name: field_scholarship_country
+entity_type: node
+bundle: scholarship
+label: Country
+description: 'Scholarship''s country.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  selectable_countries: {  }
+field_type: country

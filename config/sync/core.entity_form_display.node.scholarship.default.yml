@@ -1,0 +1,116 @@
+uuid: 12da9160-01fa-463c-a985-a0a45e87a823
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.scholarship.field_scholarship_additional_inf
+    - field.field.node.scholarship.field_scholarship_attached_docs
+    - field.field.node.scholarship.field_scholarship_candidacy_date
+    - field.field.node.scholarship.field_scholarship_candidacy_proc
+    - field.field.node.scholarship.field_scholarship_candidacy_req
+    - field.field.node.scholarship.field_scholarship_country
+    - field.field.node.scholarship.field_scholarship_description
+    - field.field.node.scholarship.field_scholarship_eligibility
+    - field.field.node.scholarship.field_scholarship_selection_proc
+    - node.type.scholarship
+  module:
+    - country
+    - datetime
+    - file
+    - text
+id: node.scholarship.default
+targetEntityType: node
+bundle: scholarship
+mode: default
+content:
+  field_scholarship_additional_inf:
+    type: text_textarea
+    weight: 9
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_scholarship_attached_docs:
+    type: file_generic
+    weight: 26
+    region: content
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
+  field_scholarship_candidacy_date:
+    type: datetime_default
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_scholarship_candidacy_proc:
+    type: text_textarea
+    weight: 7
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_scholarship_candidacy_req:
+    type: text_textarea
+    weight: 6
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_scholarship_country:
+    type: country_autocomplete
+    weight: 1
+    region: content
+    settings:
+      size: '60'
+      autocomplete_route_name: country.autocomplete
+      placeholder: 'Start typing a country name ...'
+    third_party_settings: {  }
+  field_scholarship_description:
+    type: text_textarea
+    weight: 3
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_scholarship_eligibility:
+    type: text_textarea
+    weight: 4
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_scholarship_selection_proc:
+    type: text_textarea
+    weight: 8
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 2
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  path: true
+  promote: true
+  sticky: true
+  uid: true

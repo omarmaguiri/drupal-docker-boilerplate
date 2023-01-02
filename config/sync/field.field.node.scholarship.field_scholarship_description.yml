@@ -1,0 +1,21 @@
+uuid: 7f17112b-f51b-44d4-8867-2bd9a8077d4c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_scholarship_description
+    - node.type.scholarship
+  module:
+    - text
+id: node.scholarship.field_scholarship_description
+field_name: field_scholarship_description
+entity_type: node
+bundle: scholarship
+label: Description
+description: 'Scholarship''s description.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

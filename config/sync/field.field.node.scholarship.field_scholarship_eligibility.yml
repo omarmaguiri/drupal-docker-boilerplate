@@ -1,0 +1,21 @@
+uuid: ef719473-fdeb-40bf-9686-45e55361326c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_scholarship_eligibility
+    - node.type.scholarship
+  module:
+    - text
+id: node.scholarship.field_scholarship_eligibility
+field_name: field_scholarship_eligibility
+entity_type: node
+bundle: scholarship
+label: Eligibility
+description: 'Scholarship''s eligibility.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

@@ -1,0 +1,38 @@
+uuid: 2d144010-d44b-4c04-949e-eb4ad1dfef9a
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.scholarship.field_scholarship_additional_inf
+    - field.field.node.scholarship.field_scholarship_attached_docs
+    - field.field.node.scholarship.field_scholarship_candidacy_date
+    - field.field.node.scholarship.field_scholarship_candidacy_proc
+    - field.field.node.scholarship.field_scholarship_candidacy_req
+    - field.field.node.scholarship.field_scholarship_country
+    - field.field.node.scholarship.field_scholarship_description
+    - field.field.node.scholarship.field_scholarship_eligibility
+    - field.field.node.scholarship.field_scholarship_selection_proc
+    - node.type.scholarship
+  module:
+    - user
+id: node.scholarship.teaser
+targetEntityType: node
+bundle: scholarship
+mode: teaser
+content:
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_scholarship_additional_inf: true
+  field_scholarship_attached_docs: true
+  field_scholarship_candidacy_date: true
+  field_scholarship_candidacy_proc: true
+  field_scholarship_candidacy_req: true
+  field_scholarship_country: true
+  field_scholarship_description: true
+  field_scholarship_eligibility: true
+  field_scholarship_selection_proc: true

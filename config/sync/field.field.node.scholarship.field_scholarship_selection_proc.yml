@@ -1,0 +1,21 @@
+uuid: 47d49490-b413-4497-968d-bc0d70240fc5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_scholarship_selection_proc
+    - node.type.scholarship
+  module:
+    - text
+id: node.scholarship.field_scholarship_selection_proc
+field_name: field_scholarship_selection_proc
+entity_type: node
+bundle: scholarship
+label: 'Selection procedure'
+description: 'Scholarship''s Selection procedure.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long
