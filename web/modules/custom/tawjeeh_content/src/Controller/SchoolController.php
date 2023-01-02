@@ -7,6 +7,7 @@ use Drupal\Core\Cache\CacheableMetadata;
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\File\FileUrlGeneratorInterface;
+use Drupal\Core\Routing\UrlGeneratorInterface;
 use Drupal\file\Entity\File;
 use Drupal\node\NodeInterface;
 use Drupal\taxonomy\TermInterface;
@@ -15,7 +16,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class SchoolController extends ControllerBase {
 
-  public function __construct(protected FileUrlGeneratorInterface $fileUrlGenerator, protected \Drupal\Core\Routing\UrlGeneratorInterface $urlGenerator)
+  public function __construct(protected FileUrlGeneratorInterface $fileUrlGenerator, protected UrlGeneratorInterface $urlGenerator)
   {
   }
 

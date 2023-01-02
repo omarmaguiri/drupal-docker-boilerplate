@@ -79,3 +79,26 @@ tawjeeh_content.api.preparation-centers.get:
       center:
         type: entity:node
     _auth: [ 'api_jwt_auth' ]
+
+tawjeeh_content.api.scholarships:
+  path: '/api/scholarships'
+  defaults:
+    _title: 'Scholarships'
+    _controller: '\Drupal\tawjeeh_content\Controller\ScholarshipController::all'
+  requirements:
+    _user_is_logged_in: 'TRUE'
+  options:
+    _auth: [ 'api_jwt_auth' ]
+
+tawjeeh_content.api.scholarships.get:
+  path: '/api/scholarships/{scholarship}'
+  defaults:
+    _title: 'Preparation center'
+    _controller: '\Drupal\tawjeeh_content\Controller\ScholarshipController::get'
+  requirements:
+    _user_is_logged_in: 'TRUE'
+  options:
+    parameters:
+      scholarship:
+        type: entity:node
+    _auth: [ 'api_jwt_auth' ]

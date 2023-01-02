@@ -1,0 +1,27 @@
+uuid: 6f0dd8f3-5ec1-4d8d-84b4-2e3a19772af6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_scholarship_attached_docs
+    - node.type.scholarship
+  module:
+    - file
+id: node.scholarship.field_scholarship_attached_docs
+field_name: field_scholarship_attached_docs
+entity_type: node
+bundle: scholarship
+label: 'Attached documents'
+description: 'Scholarship attached documents.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: uploads/scholarships
+  file_extensions: pdf
+  max_filesize: '5 MB'
+  description_field: true
+field_type: file

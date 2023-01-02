@@ -1,0 +1,21 @@
+uuid: dd5e22a6-3fe4-481b-983b-8aad838052cb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_scholarship_candidacy_date
+    - node.type.scholarship
+  module:
+    - datetime
+id: node.scholarship.field_scholarship_candidacy_date
+field_name: field_scholarship_candidacy_date
+entity_type: node
+bundle: scholarship
+label: 'Application deadline'
+description: 'Scholarship application deadline.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

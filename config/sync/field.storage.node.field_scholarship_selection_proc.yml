@@ -1,0 +1,19 @@
+uuid: 7f11cdd7-8d4a-49de-bdd1-4fe59e71ddb9
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - text
+id: node.field_scholarship_selection_proc
+field_name: field_scholarship_selection_proc
+entity_type: node
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
