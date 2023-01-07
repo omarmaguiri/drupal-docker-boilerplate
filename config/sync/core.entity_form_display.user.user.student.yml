@@ -24,6 +24,7 @@ dependencies:
     - field.field.user.user.field_student_last_name_arabic
     - field.field.user.user.field_student_massar_code
     - field.field.user.user.field_student_national_score
+    - field.field.user.user.field_student_package
     - field.field.user.user.field_student_parent_phone
     - field.field.user.user.field_student_phone
     - field.field.user.user.field_student_promotion
@@ -126,7 +127,7 @@ content:
     third_party_settings: {  }
   field_student_converter:
     type: entity_reference_autocomplete
-    weight: 30
+    weight: 31
     region: content
     settings:
       match_operator: CONTAINS
@@ -136,7 +137,7 @@ content:
     third_party_settings: {  }
   field_student_coupon:
     type: entity_reference_autocomplete
-    weight: 29
+    weight: 30
     region: content
     settings:
       match_operator: CONTAINS
@@ -215,6 +216,16 @@ content:
     settings:
       placeholder: ''
     third_party_settings: {  }
+  field_student_package:
+    type: entity_reference_autocomplete
+    weight: 28
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   field_student_parent_phone:
     type: string_textfield
     weight: 11
@@ -233,7 +244,7 @@ content:
     third_party_settings: {  }
   field_student_promotion:
     type: entity_reference_autocomplete
-    weight: 28
+    weight: 29
     region: content
     settings:
       match_operator: CONTAINS

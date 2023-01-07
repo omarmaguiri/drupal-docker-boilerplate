@@ -1,0 +1,19 @@
+uuid: 6d685e5a-6f94-4b01-8201-c8a2ad74f896
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - text
+id: node.field_letter_important_dates
+field_name: field_letter_important_dates
+entity_type: node
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

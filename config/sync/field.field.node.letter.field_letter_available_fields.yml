@@ -1,0 +1,21 @@
+uuid: 60c60d0c-6c09-4eba-9e97-9b0449ca2f20
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_letter_available_fields
+    - node.type.letter
+  module:
+    - text
+id: node.letter.field_letter_available_fields
+field_name: field_letter_available_fields
+entity_type: node
+bundle: letter
+label: 'Available fields'
+description: 'Available fields.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

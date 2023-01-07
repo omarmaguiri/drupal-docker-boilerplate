@@ -1,0 +1,21 @@
+uuid: a18756e8-febf-4e09-9855-0779078d3082
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_letter_access_conditions
+    - node.type.letter
+  module:
+    - text
+id: node.letter.field_letter_access_conditions
+field_name: field_letter_access_conditions
+entity_type: node
+bundle: letter
+label: 'Access conditions'
+description: 'Access conditions.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

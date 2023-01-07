@@ -1,0 +1,21 @@
+uuid: d3d5f8fd-d416-4aff-9d66-b3f7d2f1813c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_letter_school_type
+    - node.type.letter
+  module:
+    - options
+id: node.letter.field_letter_school_type
+field_name: field_letter_school_type
+entity_type: node
+bundle: letter
+label: 'School''s type'
+description: 'School''s type.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

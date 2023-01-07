@@ -1,0 +1,8 @@
+uuid: 58fb05db-8b89-434c-80a4-67c7702adf25
+langcode: en
+status: true
+dependencies: {  }
+name: 'Travel promotions'
+vid: travel_promotions
+description: 'Company travel promotions.'
+weight: 0

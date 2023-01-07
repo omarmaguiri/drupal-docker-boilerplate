@@ -1,0 +1,15 @@
+<?php
+
+use Drupal\node\NodeInterface;
+
+/**
+ * Implements hook_node_presave().
+ *
+ * @param NodeInterface $node
+ * @return void
+ */
+function tawjeeh_content_node_presave(NodeInterface $node): void {
+  if ($node->isNew() && 'letter' === $node->getType()) {
+    //@todo send notification
+  }
+}

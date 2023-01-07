@@ -1,0 +1,8 @@
+uuid: 35a10059-da69-4f47-b5cc-9aa3bdc92172
+langcode: en
+status: true
+dependencies: {  }
+name: Packages
+vid: packages
+description: 'Company registration packages.'
+weight: 0

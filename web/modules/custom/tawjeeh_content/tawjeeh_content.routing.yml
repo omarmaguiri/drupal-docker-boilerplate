@@ -80,6 +80,16 @@ tawjeeh_content.api.preparation-centers.get:
         type: entity:node
     _auth: [ 'api_jwt_auth' ]
 
+tawjeeh_content.api.preparation-centers_cities:
+  path: '/api/preparation-centers/cities'
+  defaults:
+    _title: 'Preparation center cities'
+    _controller: '\Drupal\tawjeeh_content\Controller\PreparationCenterController::cities'
+  requirements:
+    _user_is_logged_in: 'TRUE'
+  options:
+    _auth: [ 'api_jwt_auth' ]
+
 tawjeeh_content.api.scholarships:
   path: '/api/scholarships'
   defaults:
@@ -93,12 +103,47 @@ tawjeeh_content.api.scholarships:
 tawjeeh_content.api.scholarships.get:
   path: '/api/scholarships/{scholarship}'
   defaults:
-    _title: 'Preparation center'
+    _title: 'Scholarship'
     _controller: '\Drupal\tawjeeh_content\Controller\ScholarshipController::get'
   requirements:
     _user_is_logged_in: 'TRUE'
   options:
     parameters:
       scholarship:
+        type: entity:node
+    _auth: [ 'api_jwt_auth' ]
+
+tawjeeh_content.api.scholarships_countries:
+  path: '/api/scholarships/countries'
+  defaults:
+    _title: 'Scholarships countries'
+    _controller: '\Drupal\tawjeeh_content\Controller\ScholarshipController::countries'
+  requirements:
+    _user_is_logged_in: 'TRUE'
+  options:
+    _auth: [ 'api_jwt_auth' ]
+
+tawjeeh_content.api.letters:
+  path: '/api/letters'
+  defaults:
+    _title: 'Letters'
+    _controller: '\Drupal\tawjeeh_content\Controller\LetterController::all'
+  requirements:
+    _user_is_logged_in: 'TRUE'
+  options:
+    no_cache: 'TRUE'
+    _auth: [ 'api_jwt_auth' ]
+
+tawjeeh_content.api.letters.get:
+  path: '/api/letters/{letter}'
+  defaults:
+    _title: 'Preparation center'
+    _controller: '\Drupal\tawjeeh_content\Controller\LetterController::get'
+  requirements:
+    _user_is_logged_in: 'TRUE'
+  options:
+    no_cache: 'TRUE'
+    parameters:
+      letter:
         type: entity:node
     _auth: [ 'api_jwt_auth' ]

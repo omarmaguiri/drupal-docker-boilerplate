@@ -1,0 +1,21 @@
+uuid: 93d9c322-bed9-4117-acb2-e074cea00a2f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_letter_additional_inf
+    - node.type.letter
+  module:
+    - text
+id: node.letter.field_letter_additional_inf
+field_name: field_letter_additional_inf
+entity_type: node
+bundle: letter
+label: 'Additional information'
+description: 'Additional information.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

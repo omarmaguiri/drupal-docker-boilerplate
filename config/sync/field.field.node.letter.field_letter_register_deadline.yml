@@ -1,0 +1,21 @@
+uuid: b4303c63-c094-42e2-847f-dfaac7c88732
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_letter_register_deadline
+    - node.type.letter
+  module:
+    - datetime
+id: node.letter.field_letter_register_deadline
+field_name: field_letter_register_deadline
+entity_type: node
+bundle: letter
+label: 'Registration''s deadline'
+description: 'Registration''s deadline.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

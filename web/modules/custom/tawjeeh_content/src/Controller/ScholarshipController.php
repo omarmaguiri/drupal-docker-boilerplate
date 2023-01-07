@@ -10,10 +10,12 @@ use Drupal\Core\File\FileUrlGeneratorInterface;
 use Drupal\file\Entity\File;
 use Drupal\node\NodeInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class ScholarshipController extends ControllerBase {
 
+  const FLAG_PROVIDER = 'https://countryflagsapi.com/png';
 
   public function __construct(protected FileUrlGeneratorInterface $fileUrlGenerator)
   {
@@ -40,8 +42,9 @@ class ScholarshipController extends ControllerBase {
     ];
     return (new CacheableJsonResponse($this->scholarshipNormalize($scholarship)))->addCacheableDependency(CacheableMetadata::createFromRenderArray($cacheMetadata));
   }
-  public function all(): CacheableJsonResponse
+  public function all(Request $request): CacheableJsonResponse
   {
+    $country = $request->query->get('country');
     $nodes = $this->entityTypeManager()
       ->getStorage('node')
       ->loadByProperties([
@@ -51,6 +54,9 @@ class ScholarshipController extends ControllerBase {
 
     $scholarships = [];
     foreach ($nodes as $node) {
+      if ($country && strtoupper($country) !== strtoupper($node->get('field_scholarship_country')->first()->getString())) {
+        continue;
+      }
       $scholarships[] = $this->scholarshipNormalize($node);
     }
     $cacheMetadata['#cache'] = [
@@ -59,7 +65,35 @@ class ScholarshipController extends ControllerBase {
         'taxonomy_term_list:cities',
       ]
     ];
-    return (new CacheableJsonResponse($scholarships))->addCacheableDependency(CacheableMetadata::createFromRenderArray($cacheMetadata));
+    return (new CacheableJsonResponse($scholarships))->addCacheableDependency(CacheableMetadata::createFromRenderArray($cacheMetadata)->addCacheContexts(['url.query_args:country']));
+  }
+  public function countries(): CacheableJsonResponse
+  {
+    $nodes = $this->entityTypeManager()
+      ->getStorage('node')
+      ->loadByProperties([
+        'status' => 1,
+        'type' => 'scholarship',
+      ]);
+
+    $countries = [];
+    foreach ($nodes as $node) {
+      if ($countries[$node->get('field_scholarship_country')->first()->getString()] ?? FALSE) {
+        continue;
+      }
+      $countries[$node->get('field_scholarship_country')->first()->getString()] = [
+        'code' => $node->get('field_scholarship_country')->first()->getString(),
+        'flag' => sprintf('%s/%s', self::FLAG_PROVIDER, $node->get('field_scholarship_country')->first()->getString()),
+        'name' => \Drupal::service('country_manager')->getList()[$node->get('field_scholarship_country')->first()->getString()]->render(),
+      ];
+    }
+
+    $cacheMetadata['#cache'] = [
+      'tags' => [
+        'node_list:scholarship',
+      ]
+    ];
+    return (new CacheableJsonResponse(array_values($countries)))->addCacheableDependency(CacheableMetadata::createFromRenderArray($cacheMetadata));
   }
 
   private function scholarshipNormalize(EntityInterface $node): array
@@ -69,7 +103,7 @@ class ScholarshipController extends ControllerBase {
       'name' => $node->label(),
       'country' => [
         'code' => $node->get('field_scholarship_country')->first()->getString(),
-        'flag' => sprintf('https://countryflagsapi.com/png/%s', $node->get('field_scholarship_country')->first()->getString()),
+        'flag' => sprintf('%s/%s', self::FLAG_PROVIDER, $node->get('field_scholarship_country')->first()->getString()),
         'name' => \Drupal::service('country_manager')->getList()[$node->get('field_scholarship_country')->first()->getString()]->render(),
       ],
       'description' => $node->get('field_scholarship_description')->value,

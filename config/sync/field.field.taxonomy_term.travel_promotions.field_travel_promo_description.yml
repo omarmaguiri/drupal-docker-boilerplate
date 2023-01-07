@@ -1,0 +1,21 @@
+uuid: 386039a3-104a-46ae-a21e-b9b8a6ab28d5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_travel_promo_description
+    - taxonomy.vocabulary.travel_promotions
+  module:
+    - text
+id: taxonomy_term.travel_promotions.field_travel_promo_description
+field_name: field_travel_promo_description
+entity_type: taxonomy_term
+bundle: travel_promotions
+label: Description
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

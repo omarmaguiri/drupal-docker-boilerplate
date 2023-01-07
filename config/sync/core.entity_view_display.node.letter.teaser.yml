@@ -1,0 +1,52 @@
+uuid: e2a6ddb2-27e6-479e-a9e9-a9b071e9f65f
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.letter.field_letter_access_conditions
+    - field.field.node.letter.field_letter_additional_inf
+    - field.field.node.letter.field_letter_attached_docs
+    - field.field.node.letter.field_letter_available_fields
+    - field.field.node.letter.field_letter_bac_fields
+    - field.field.node.letter.field_letter_candidacy_req
+    - field.field.node.letter.field_letter_important_dates
+    - field.field.node.letter.field_letter_packs
+    - field.field.node.letter.field_letter_picture
+    - field.field.node.letter.field_letter_register_deadline
+    - field.field.node.letter.field_letter_register_link
+    - field.field.node.letter.field_letter_register_method
+    - field.field.node.letter.field_letter_school_cities
+    - field.field.node.letter.field_letter_school_description
+    - field.field.node.letter.field_letter_school_type
+    - field.field.node.letter.field_letter_tawjeeh_promotion
+    - node.type.letter
+  module:
+    - user
+id: node.letter.teaser
+targetEntityType: node
+bundle: letter
+mode: teaser
+content:
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_letter_access_conditions: true
+  field_letter_additional_inf: true
+  field_letter_attached_docs: true
+  field_letter_available_fields: true
+  field_letter_bac_fields: true
+  field_letter_candidacy_req: true
+  field_letter_important_dates: true
+  field_letter_packs: true
+  field_letter_picture: true
+  field_letter_register_deadline: true
+  field_letter_register_link: true
+  field_letter_register_method: true
+  field_letter_school_cities: true
+  field_letter_school_description: true
+  field_letter_school_type: true
+  field_letter_tawjeeh_promotion: true
