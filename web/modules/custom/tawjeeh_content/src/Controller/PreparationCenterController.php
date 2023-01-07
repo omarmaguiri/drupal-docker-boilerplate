@@ -10,6 +10,7 @@ use Drupal\Core\File\FileUrlGeneratorInterface;
 use Drupal\file\Entity\File;
 use Drupal\node\NodeInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class PreparationCenterController extends ControllerBase {
@@ -39,14 +40,18 @@ class PreparationCenterController extends ControllerBase {
     ];
     return (new CacheableJsonResponse($this->centerNormalize($center)))->addCacheableDependency(CacheableMetadata::createFromRenderArray($cacheMetadata));
   }
-  public function all(): CacheableJsonResponse
+  public function all(Request $request): CacheableJsonResponse
   {
+    $properties = [
+      'status' => 1,
+      'type' => 'preparation_center',
+    ];
+    if ($city = $request->query->get('city')) {
+      $properties['field_prep_center_city'] = $city;
+    }
     $nodes = $this->entityTypeManager()
       ->getStorage('node')
-      ->loadByProperties([
-        'status' => 1,
-        'type' => 'preparation_center',
-      ]);
+      ->loadByProperties($properties);
 
     $centers = [];
     foreach ($nodes as $node) {
@@ -59,7 +64,35 @@ class PreparationCenterController extends ControllerBase {
         'taxonomy_term_list:cities',
       ]
     ];
-    return (new CacheableJsonResponse($centers))->addCacheableDependency(CacheableMetadata::createFromRenderArray($cacheMetadata));
+    return (new CacheableJsonResponse($centers))->addCacheableDependency(CacheableMetadata::createFromRenderArray($cacheMetadata)->addCacheContexts(['url.query_args:city']));
+  }
+  public function cities(): CacheableJsonResponse
+  {
+    $nodes = $this->entityTypeManager()
+      ->getStorage('node')
+      ->loadByProperties([
+        'status' => 1,
+        'type' => 'preparation_center',
+      ]);
+
+    $cities = [];
+    foreach ($nodes as $node) {
+      if ($cities[$node->get('field_prep_center_city')->entity->id()] ?? FALSE) {
+        continue;
+      }
+      $cities[$node->get('field_prep_center_city')->entity->id()] = [
+        'id' => $node->get('field_prep_center_city')->entity->id(),
+        'name' => $node->get('field_prep_center_city')->entity->label(),
+      ];
+    }
+
+    $cacheMetadata['#cache'] = [
+      'tags' => [
+        'node_list:preparation_center',
+        'taxonomy_term_list:cities',
+      ]
+    ];
+    return (new CacheableJsonResponse(array_values($cities)))->addCacheableDependency(CacheableMetadata::createFromRenderArray($cacheMetadata));
   }
 
   private function centerNormalize(EntityInterface $node): array
@@ -73,7 +106,7 @@ class PreparationCenterController extends ControllerBase {
       'email' => $node->get('field_prep_center_email')->value,
       'phone' => $node->get('field_prep_center_phone')->value,
       'whatsapp' => $node->get('field_prep_center_whatsapp')->value,
-      'city' => $node->get('field_prep_center_city')->entity?->label(),
+      'city' => $node->get('field_prep_center_city')->entity->label(),
       'location' => $node->get('field_prep_center_location')->first()?->getValue(),
     ];
   }
