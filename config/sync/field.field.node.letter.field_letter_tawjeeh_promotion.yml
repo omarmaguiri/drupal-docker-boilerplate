@@ -1,0 +1,29 @@
+uuid: 65133873-3393-47e0-b27c-706b4d7d24bd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_letter_tawjeeh_promotion
+    - node.type.letter
+    - taxonomy.vocabulary.travel_promotions
+id: node.letter.field_letter_tawjeeh_promotion
+field_name: field_letter_tawjeeh_promotion
+entity_type: node
+bundle: letter
+label: 'Tawjeeh promotion'
+description: 'Tawjeeh promotion.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      travel_promotions: travel_promotions
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

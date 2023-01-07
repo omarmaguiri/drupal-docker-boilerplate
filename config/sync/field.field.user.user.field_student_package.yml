@@ -1,0 +1,30 @@
+uuid: f61afe26-189f-4cc2-bc3b-ac28601511f5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_student_package
+    - taxonomy.vocabulary.packages
+  module:
+    - user
+id: user.user.field_student_package
+field_name: field_student_package
+entity_type: user
+bundle: user
+label: Package
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      packages: packages
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

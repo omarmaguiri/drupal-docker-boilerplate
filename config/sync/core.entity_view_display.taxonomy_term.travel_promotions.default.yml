@@ -1,0 +1,29 @@
+uuid: 6f0635b8-8c85-45cc-9ac5-4b4398a5e312
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.travel_promotions.field_travel_promo_description
+    - taxonomy.vocabulary.travel_promotions
+  module:
+    - text
+id: taxonomy_term.travel_promotions.default
+targetEntityType: taxonomy_term
+bundle: travel_promotions
+mode: default
+content:
+  description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_travel_promo_description:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden: {  }

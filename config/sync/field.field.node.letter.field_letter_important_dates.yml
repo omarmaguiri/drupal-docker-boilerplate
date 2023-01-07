@@ -1,0 +1,21 @@
+uuid: affb3024-aa0c-42d6-a36a-f71e6f5afa22
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_letter_important_dates
+    - node.type.letter
+  module:
+    - text
+id: node.letter.field_letter_important_dates
+field_name: field_letter_important_dates
+entity_type: node
+bundle: letter
+label: 'Important dates'
+description: 'Important dates.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

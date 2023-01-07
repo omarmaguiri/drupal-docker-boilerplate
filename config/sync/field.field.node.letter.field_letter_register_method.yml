@@ -1,0 +1,21 @@
+uuid: 74b471de-ff9c-4432-b398-3a45e8a50af5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_letter_register_method
+    - node.type.letter
+  module:
+    - text
+id: node.letter.field_letter_register_method
+field_name: field_letter_register_method
+entity_type: node
+bundle: letter
+label: 'Registration''s method'
+description: 'Registration''s method.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

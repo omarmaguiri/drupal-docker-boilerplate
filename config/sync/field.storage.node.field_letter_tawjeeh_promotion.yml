@@ -1,0 +1,20 @@
+uuid: f31df79a-3494-45fb-a231-ff86b5cd9bc0
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - taxonomy
+id: node.field_letter_tawjeeh_promotion
+field_name: field_letter_tawjeeh_promotion
+entity_type: node
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

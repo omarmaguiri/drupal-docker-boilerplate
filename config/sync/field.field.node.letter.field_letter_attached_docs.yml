@@ -1,0 +1,27 @@
+uuid: a60717ae-f1dc-40c5-b9f4-116042f06e4b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_letter_attached_docs
+    - node.type.letter
+  module:
+    - file
+id: node.letter.field_letter_attached_docs
+field_name: field_letter_attached_docs
+entity_type: node
+bundle: letter
+label: 'Attached documents'
+description: 'Attached documents.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: uploads/letters
+  file_extensions: pdf
+  max_filesize: '5 MB'
+  description_field: true
+field_type: file

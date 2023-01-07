@@ -1,0 +1,17 @@
+uuid: d5305706-8dcc-4287-a2a9-3bff4e835db4
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: Courrier
+type: letter
+description: 'Represents a letter sent to students.'
+help: ''
+new_revision: false
+preview_mode: 0
+display_submitted: false

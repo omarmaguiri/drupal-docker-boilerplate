@@ -1,0 +1,19 @@
+uuid: 1cc6fa92-de51-4a8b-96e5-f1bec1c2a241
+langcode: en
+status: true
+dependencies:
+  module:
+    - taxonomy
+    - text
+id: taxonomy_term.field_travel_promo_description
+field_name: field_travel_promo_description
+entity_type: taxonomy_term
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

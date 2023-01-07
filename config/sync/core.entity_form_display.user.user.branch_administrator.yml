@@ -24,6 +24,7 @@ dependencies:
     - field.field.user.user.field_student_last_name_arabic
     - field.field.user.user.field_student_massar_code
     - field.field.user.user.field_student_national_score
+    - field.field.user.user.field_student_package
     - field.field.user.user.field_student_parent_phone
     - field.field.user.user.field_student_phone
     - field.field.user.user.field_student_promotion
@@ -100,6 +101,7 @@ hidden:
   field_student_last_name_arabic: true
   field_student_massar_code: true
   field_student_national_score: true
+  field_student_package: true
   field_student_parent_phone: true
   field_student_phone: true
   field_student_promotion: true

@@ -1,0 +1,19 @@
+uuid: 1c823728-a937-4008-bf92-4a6219c92225
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - text
+id: node.field_letter_register_method
+field_name: field_letter_register_method
+entity_type: node
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

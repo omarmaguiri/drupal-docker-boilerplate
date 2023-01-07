@@ -23,6 +23,7 @@ dependencies:
     - field.field.user.user.field_student_last_name_arabic
     - field.field.user.user.field_student_massar_code
     - field.field.user.user.field_student_national_score
+    - field.field.user.user.field_student_package
     - field.field.user.user.field_student_parent_phone
     - field.field.user.user.field_student_phone
     - field.field.user.user.field_student_promotion
@@ -212,6 +213,14 @@ content:
       prefix_suffix: true
     third_party_settings: {  }
     weight: 24
+    region: content
+  field_student_package:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 35
     region: content
   field_student_parent_phone:
     type: string

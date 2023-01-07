@@ -1,0 +1,21 @@
+uuid: 102f14a4-c96e-4de0-b27e-d3cccfe3ea8a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_letter_school_cities
+    - node.type.letter
+  module:
+    - text
+id: node.letter.field_letter_school_cities
+field_name: field_letter_school_cities
+entity_type: node
+bundle: letter
+label: 'School''s cities'
+description: 'School''s cities.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

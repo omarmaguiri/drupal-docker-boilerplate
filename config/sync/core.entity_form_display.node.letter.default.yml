@@ -1,0 +1,184 @@
+uuid: 83fcdfc5-ebea-43b5-b49b-20c7546860a6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.letter.field_letter_access_conditions
+    - field.field.node.letter.field_letter_additional_inf
+    - field.field.node.letter.field_letter_attached_docs
+    - field.field.node.letter.field_letter_available_fields
+    - field.field.node.letter.field_letter_bac_fields
+    - field.field.node.letter.field_letter_candidacy_req
+    - field.field.node.letter.field_letter_important_dates
+    - field.field.node.letter.field_letter_packs
+    - field.field.node.letter.field_letter_picture
+    - field.field.node.letter.field_letter_register_deadline
+    - field.field.node.letter.field_letter_register_link
+    - field.field.node.letter.field_letter_register_method
+    - field.field.node.letter.field_letter_school_cities
+    - field.field.node.letter.field_letter_school_description
+    - field.field.node.letter.field_letter_school_type
+    - field.field.node.letter.field_letter_tawjeeh_promotion
+    - image.style.thumbnail
+    - node.type.letter
+  module:
+    - datetime
+    - file
+    - image
+    - link
+    - text
+id: node.letter.default
+targetEntityType: node
+bundle: letter
+mode: default
+content:
+  field_letter_access_conditions:
+    type: text_textarea
+    weight: 6
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_letter_additional_inf:
+    type: text_textarea
+    weight: 13
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_letter_attached_docs:
+    type: file_generic
+    weight: 14
+    region: content
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
+  field_letter_available_fields:
+    type: text_textarea
+    weight: 4
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_letter_bac_fields:
+    type: entity_reference_autocomplete
+    weight: 16
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_letter_candidacy_req:
+    type: text_textarea
+    weight: 7
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_letter_important_dates:
+    type: text_textarea
+    weight: 11
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_letter_packs:
+    type: entity_reference_autocomplete
+    weight: 15
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_letter_picture:
+    type: image_image
+    weight: 1
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+  field_letter_register_deadline:
+    type: datetime_default
+    weight: 8
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_letter_register_link:
+    type: link_default
+    weight: 10
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_letter_register_method:
+    type: text_textarea
+    weight: 9
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_letter_school_cities:
+    type: text_textarea
+    weight: 5
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_letter_school_description:
+    type: text_textarea
+    weight: 3
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_letter_school_type:
+    type: options_select
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_letter_tawjeeh_promotion:
+    type: entity_reference_autocomplete
+    weight: 12
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 17
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  path: true
+  promote: true
+  sticky: true
+  uid: true

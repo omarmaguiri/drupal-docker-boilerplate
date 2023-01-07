@@ -1,0 +1,168 @@
+uuid: 67039adb-ed86-49f2-b3c6-15814cb6da2f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.letter.field_letter_access_conditions
+    - field.field.node.letter.field_letter_additional_inf
+    - field.field.node.letter.field_letter_attached_docs
+    - field.field.node.letter.field_letter_available_fields
+    - field.field.node.letter.field_letter_bac_fields
+    - field.field.node.letter.field_letter_candidacy_req
+    - field.field.node.letter.field_letter_important_dates
+    - field.field.node.letter.field_letter_packs
+    - field.field.node.letter.field_letter_picture
+    - field.field.node.letter.field_letter_register_deadline
+    - field.field.node.letter.field_letter_register_link
+    - field.field.node.letter.field_letter_register_method
+    - field.field.node.letter.field_letter_school_cities
+    - field.field.node.letter.field_letter_school_description
+    - field.field.node.letter.field_letter_school_type
+    - field.field.node.letter.field_letter_tawjeeh_promotion
+    - node.type.letter
+  module:
+    - datetime
+    - file
+    - image
+    - link
+    - options
+    - text
+    - user
+id: node.letter.default
+targetEntityType: node
+bundle: letter
+mode: default
+content:
+  field_letter_access_conditions:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 105
+    region: content
+  field_letter_additional_inf:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 113
+    region: content
+  field_letter_attached_docs:
+    type: file_default
+    label: above
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    weight: 114
+    region: content
+  field_letter_available_fields:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 109
+    region: content
+  field_letter_bac_fields:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 116
+    region: content
+  field_letter_candidacy_req:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 106
+    region: content
+  field_letter_important_dates:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 111
+    region: content
+  field_letter_packs:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 115
+    region: content
+  field_letter_picture:
+    type: image
+    label: above
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  field_letter_register_deadline:
+    type: datetime_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 104
+    region: content
+  field_letter_register_link:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 107
+    region: content
+  field_letter_register_method:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 108
+    region: content
+  field_letter_school_cities:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 110
+    region: content
+  field_letter_school_description:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  field_letter_school_type:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 103
+    region: content
+  field_letter_tawjeeh_promotion:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 117
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden: {  }
