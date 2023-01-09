@@ -1,0 +1,22 @@
+version: "3.8"
+
+services:
+  php:
+    build:
+      context: .
+      dockerfile: Dockerfile_dev
+      target: drupal_php
+    container_name: ${PROJECT_NAME}_php-buster
+    image: ${PROJECT_NAME}/php-buster:${PROJECT_TAG}
+    volumes:
+      - ./:${PROJECT_WORKDIR:-/srv/app}:rw
+
+  nginx:
+    build:
+      context: .
+      dockerfile: Dockerfile_dev
+      target: drupal_nginx
+    volumes:
+      - ./web:${PROJECT_WORKDIR:-/srv/app}/web:ro
+    ports:
+      - "${PROJECT_PORT}:80"
