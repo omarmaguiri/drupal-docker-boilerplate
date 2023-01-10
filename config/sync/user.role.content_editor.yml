@@ -3,18 +3,18 @@ langcode: en
 status: true
 dependencies:
   config:
-    - node.type.article
-    - node.type.page
+    - node.type.letter
+    - node.type.preparation_center
+    - node.type.scholarship
     - node.type.school
-    - taxonomy.vocabulary.tags
   module:
     - comment
     - contextual
     - file
+    - image
     - node
     - path
     - system
-    - taxonomy
     - toolbar
     - tour
 _core:
@@ -30,32 +30,32 @@ permissions:
   - 'access files overview'
   - 'access toolbar'
   - 'access tour'
+  - 'administer image styles'
+  - 'administer nodes'
   - 'administer url aliases'
-  - 'create article content'
-  - 'create page content'
+  - 'create letter content'
+  - 'create preparation_center content'
+  - 'create scholarship content'
   - 'create school content'
-  - 'create terms in tags'
   - 'create url aliases'
-  - 'delete any article content'
-  - 'delete any page content'
+  - 'delete any letter content'
+  - 'delete any preparation_center content'
+  - 'delete any scholarship content'
   - 'delete any school content'
-  - 'delete article revisions'
-  - 'delete own article content'
-  - 'delete own page content'
+  - 'delete own letter content'
+  - 'delete own preparation_center content'
+  - 'delete own scholarship content'
   - 'delete own school content'
-  - 'delete page revisions'
-  - 'delete school revisions'
-  - 'edit any article content'
-  - 'edit any page content'
+  - 'edit any letter content'
+  - 'edit any preparation_center content'
+  - 'edit any scholarship content'
   - 'edit any school content'
-  - 'edit own article content'
   - 'edit own comments'
-  - 'edit own page content'
+  - 'edit own letter content'
+  - 'edit own preparation_center content'
+  - 'edit own scholarship content'
   - 'edit own school content'
-  - 'edit terms in tags'
   - 'revert all revisions'
-  - 'revert school revisions'
   - 'view all revisions'
   - 'view own unpublished content'
-  - 'view school revisions'
   - 'view the administration theme'
