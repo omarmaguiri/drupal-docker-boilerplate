@@ -1,18 +1,18 @@
-uuid: 9217780d-983d-47ef-bab3-afc6a3626bad
+uuid: 4d73b2ba-932a-4ac5-baa1-4e6f8e5eb35b
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_prep_center_picture
-    - node.type.preparation_center
+    - field.storage.node.field_scholarship_picture
+    - node.type.scholarship
   module:
     - image
-id: node.preparation_center.field_prep_center_picture
-field_name: field_prep_center_picture
+id: node.scholarship.field_scholarship_picture
+field_name: field_scholarship_picture
 entity_type: node
-bundle: preparation_center
+bundle: scholarship
 label: Picture
-description: 'Preparation center picture.'
+description: 'Scholarship main picture.'
 required: true
 translatable: false
 default_value: {  }
@@ -20,9 +20,9 @@ default_value_callback: ''
 settings:
   handler: 'default:file'
   handler_settings: {  }
-  file_directory: uploads/preparation_centers
+  file_directory: uploads/scholarships
   file_extensions: 'png gif jpg jpeg webp'
-  max_filesize: '5 MB'
+  max_filesize: ''
   max_resolution: ''
   min_resolution: ''
   alt_field: false

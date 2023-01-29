@@ -1,5 +1,6 @@
 <?php
 
+use Drupal\Core\Form\FormStateInterface;
 use Drupal\node\NodeInterface;
 
 /**
@@ -12,4 +13,14 @@ function tawjeeh_content_node_presave(NodeInterface $node): void {
   if ($node->isNew() && 'letter' === $node->getType()) {
     //@todo send notification
   }
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function tawjeeh_content_form_alter(array &$form, FormStateInterface $form_state, string $form_id) {
+  if (!str_starts_with($form_id, 'node_')) {
+    return;
+  }
+  $form['advanced']['#access'] = FALSE;
 }

@@ -101,6 +101,7 @@ class ScholarshipController extends ControllerBase {
     return [
       'id' => $node->id(),
       'name' => $node->label(),
+      'picture' => $this->fileUrlGenerator->generateAbsoluteString($node->get('field_scholarship_picture')->entity->getFileUri()),
       'country' => [
         'code' => $node->get('field_scholarship_country')->first()->getString(),
         'flag' => sprintf('%s/%s', self::FLAG_PROVIDER, $node->get('field_scholarship_country')->first()->getString()),

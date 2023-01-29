@@ -151,6 +151,25 @@ function tawjeeh_people_form_alter(array &$form, FormStateInterface $form_state,
     }
   }
 
+  if ($form['field_student_converter'] ?? FALSE) {
+    $form['field_student_converter_switch'] = [
+      '#type' => 'checkbox',
+      '#title' => t('Was the student converted by an another branch agent.'),
+      '#default_value' => (bool)$form_state->getFormObject()->getEntity()->field_student_converter->target_id,
+      '#weight' => $form['field_student_converter']['#weight'] - 1,
+    ];
+    $form['field_student_converter']['#states'] = [
+      'visible' => [
+        [ ':input[name="field_student_converter_switch"]' => [ 'checked' => TRUE ] ],
+      ],
+    ];
+    $form['field_student_converter']['widget'][0]['target_id']['#states'] = [
+      'required' => [
+        [ ':input[name="field_student_converter_switch"]' => [ 'checked' => TRUE ] ],
+      ],
+    ];
+    array_unshift($form['#validate'], 'tawjeeh_people_form_student_converter_value');
+  }
 }
 
 /**
@@ -190,6 +209,18 @@ function tawjeeh_people_form_user_form_alter(array &$form, FormStateInterface $f
     $form['account']['name']['#required'] = FALSE;
     $form['account']['name']['#access'] = FALSE;
     array_unshift($form['#validate'], 'tawjeeh_people_prepare_form_user_values');
+  }
+}
+
+/**
+ * Check student converter value.
+ *
+ * @param array $form
+ * @param FormStateInterface $form_state
+ */
+function tawjeeh_people_form_student_converter_value(array &$form, FormStateInterface $form_state): void {
+  if (!$form_state->getValue('field_student_converter_switch')) {
+    $form_state->unsetValue('field_student_converter');
   }
 }
 

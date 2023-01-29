@@ -11,12 +11,14 @@ dependencies:
     - field.field.node.scholarship.field_scholarship_country
     - field.field.node.scholarship.field_scholarship_description
     - field.field.node.scholarship.field_scholarship_eligibility
+    - field.field.node.scholarship.field_scholarship_picture
     - field.field.node.scholarship.field_scholarship_selection_proc
     - node.type.scholarship
   module:
     - country
     - datetime
     - file
+    - image
     - text
     - user
 id: node.scholarship.default
@@ -82,6 +84,17 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 103
+    region: content
+  field_scholarship_picture:
+    type: image
+    label: above
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 110
     region: content
   field_scholarship_selection_proc:
     type: text_default

@@ -12,6 +12,7 @@ dependencies:
     - field.field.node.scholarship.field_scholarship_country
     - field.field.node.scholarship.field_scholarship_description
     - field.field.node.scholarship.field_scholarship_eligibility
+    - field.field.node.scholarship.field_scholarship_picture
     - field.field.node.scholarship.field_scholarship_selection_proc
     - node.type.scholarship
   module:
@@ -35,4 +36,5 @@ hidden:
   field_scholarship_country: true
   field_scholarship_description: true
   field_scholarship_eligibility: true
+  field_scholarship_picture: true
   field_scholarship_selection_proc: true
