@@ -30,21 +30,21 @@ class LetterController extends ControllerBase {
     if ('letter' !== $letter->getType()) {
       throw new NotFoundHttpException();
     }
-    $user = $this->entityTypeManager()->getStorage('user')->load($this->currentUser()->id());
-    $fields = array_map(fn ($field) => $field['target_id'], $letter->get('field_letter_bac_fields')->getValue());
-    $packs = array_map(fn ($field) => $field['target_id'], $letter->get('field_letter_packs')->getValue());
-    if (
-      !in_array($user->get('field_student_bac_field')->target_id, $fields)
-      && !in_array($user->get('field_student_package')->target_id, $packs)
-    ) {
-      throw new NotFoundHttpException();
-    }
+    // $user = $this->entityTypeManager()->getStorage('user')->load($this->currentUser()->id());
+    // $fields = array_map(fn ($field) => $field['target_id'], $letter->get('field_letter_bac_fields')->getValue());
+    // $packs = array_map(fn ($field) => $field['target_id'], $letter->get('field_letter_packs')->getValue());
+    // // if (
+    //   !in_array($user->get('field_student_bac_field')->target_id, $fields)
+    //   && !in_array($user->get('field_student_package')->target_id, $packs)
+    // ) {
+    //   throw new NotFoundHttpException();
+    // }
 
     return new JsonResponse($this->letterNormalize($letter));
   }
   public function all(): JsonResponse
   {
-    $user = $this->entityTypeManager()->getStorage('user')->load($this->currentUser()->id());
+    // $user = $this->entityTypeManager()->getStorage('user')->load($this->currentUser()->id());
     $nodes = $this->entityTypeManager()
       ->getStorage('node')
       ->loadByProperties([
@@ -54,14 +54,14 @@ class LetterController extends ControllerBase {
 
     $letters = [];
     foreach ($nodes as $node) {
-      $fields = array_map(fn ($field) => $field['target_id'], $node->get('field_letter_bac_fields')->getValue());
-      $packs = array_map(fn ($field) => $field['target_id'], $node->get('field_letter_packs')->getValue());
-      if (
-        !in_array($user->get('field_student_bac_field')->target_id, $fields)
-        && !in_array($user->get('field_student_package')->target_id, $packs)
-      ) {
-        continue;
-      }
+      // $fields = array_map(fn ($field) => $field['target_id'], $node->get('field_letter_bac_fields')->getValue());
+      // $packs = array_map(fn ($field) => $field['target_id'], $node->get('field_letter_packs')->getValue());
+      // if (
+      //   !in_array($user->get('field_student_bac_field')->target_id, $fields)
+      //   && !in_array($user->get('field_student_package')->target_id, $packs)
+      // ) {
+      //   continue;
+      // }
 
       $letters[] = $this->letterNormalize($node);
     }
