@@ -1,0 +1,11 @@
+uuid: 88cd5e9f-2fb5-4410-98d0-27aed85dbc90
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.bac_fields
+id: taxonomy_term.bac_fields
+target_entity_type_id: taxonomy_term
+target_bundle: bac_fields
+default_langcode: site_default
+language_alterable: false

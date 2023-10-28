@@ -102,5 +102,6 @@ hidden:
   field_student_sms_channel: true
   field_student_transcript_file: true
   field_user_branch: true
+  langcode: true
   language: true
   timezone: true

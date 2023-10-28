@@ -1,0 +1,11 @@
+uuid: aaa0892c-3e70-4343-ae93-c2bafd1a745c
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.letter
+id: node.letter
+target_entity_type_id: node
+target_bundle: letter
+default_langcode: fr
+language_alterable: true

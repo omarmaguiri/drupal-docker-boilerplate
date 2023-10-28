@@ -307,5 +307,6 @@ hidden:
   contact: true
   field_user_branch: true
   field_user_full_name: true
+  langcode: true
   language: true
   timezone: true

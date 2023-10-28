@@ -92,4 +92,5 @@ hidden:
   field_student_transcript_file: true
   field_user_branch: true
   field_user_full_name: true
+  langcode: true
   member_for: true

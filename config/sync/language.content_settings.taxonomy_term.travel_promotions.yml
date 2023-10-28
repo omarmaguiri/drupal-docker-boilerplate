@@ -1,0 +1,11 @@
+uuid: 966643f5-8d86-417d-9e30-d513f7e65ed7
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.travel_promotions
+id: taxonomy_term.travel_promotions
+target_entity_type_id: taxonomy_term
+target_bundle: travel_promotions
+default_langcode: site_default
+language_alterable: false

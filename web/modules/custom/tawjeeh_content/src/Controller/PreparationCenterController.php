@@ -98,6 +98,7 @@ class PreparationCenterController extends ControllerBase {
   private function centerNormalize(EntityInterface $node): array
   {
     return [
+      'lang' => $node->get('langcode')->value,
       'id' => $node->id(),
       'name' => $node->label(),
       'description' => $node->get('field_prep_center_description')->value,

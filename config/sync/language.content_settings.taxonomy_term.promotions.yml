@@ -1,0 +1,11 @@
+uuid: 7183bf1e-f099-4dcf-8162-5a6a79db8cf1
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.promotions
+id: taxonomy_term.promotions
+target_entity_type_id: taxonomy_term
+target_bundle: promotions
+default_langcode: site_default
+language_alterable: false

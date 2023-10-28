@@ -17,6 +17,7 @@
     "require": {
         "composer/installers": "^1.9",
         "drupal/admin_toolbar": "^3.3",
+        "drupal/ckeditor_bidi": "^4.0",
         "drupal/config_ignore": "^2.3",
         "drupal/core-composer-scaffold": "^9.4",
         "drupal/core-project-message": "^9.4",

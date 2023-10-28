@@ -1,0 +1,11 @@
+uuid: f00033b9-d2ad-4554-a7c2-c0e56f133358
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.scholarship
+id: node.scholarship
+target_entity_type_id: node
+target_bundle: scholarship
+default_langcode: fr
+language_alterable: true

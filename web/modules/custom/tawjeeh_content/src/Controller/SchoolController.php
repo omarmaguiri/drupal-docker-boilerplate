@@ -192,6 +192,7 @@ class SchoolController extends ControllerBase {
       ];
     }
     $school = [
+      'lang' => $node->get('langcode')->value,
       'id' => $node->id(),
       'name' => $node->label(),
       'description' => $node->get('field_school_description')->value,

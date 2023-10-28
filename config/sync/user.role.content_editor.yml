@@ -12,6 +12,7 @@ dependencies:
     - contextual
     - file
     - image
+    - language
     - node
     - path
     - system
@@ -31,6 +32,7 @@ permissions:
   - 'access toolbar'
   - 'access tour'
   - 'administer image styles'
+  - 'administer languages'
   - 'administer nodes'
   - 'administer url aliases'
   - 'create letter content'

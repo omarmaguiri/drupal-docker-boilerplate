@@ -38,3 +38,4 @@ hidden:
   field_scholarship_eligibility: true
   field_scholarship_picture: true
   field_scholarship_selection_proc: true
+  langcode: true

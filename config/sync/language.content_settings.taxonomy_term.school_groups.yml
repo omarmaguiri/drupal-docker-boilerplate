@@ -1,0 +1,11 @@
+uuid: 13b8e9f2-b447-4c9c-b0fd-569015a6f2f7
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.school_groups
+id: taxonomy_term.school_groups
+target_entity_type_id: taxonomy_term
+target_bundle: school_groups
+default_langcode: site_default
+language_alterable: false

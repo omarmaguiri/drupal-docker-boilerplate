@@ -1,0 +1,11 @@
+uuid: 2ddc4637-3ce8-4940-ae7a-ad6c9c259170
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.company_branches
+id: taxonomy_term.company_branches
+target_entity_type_id: taxonomy_term
+target_bundle: company_branches
+default_langcode: site_default
+language_alterable: false

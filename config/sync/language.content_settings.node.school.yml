@@ -1,0 +1,11 @@
+uuid: 2fac3bff-fb5a-4ef1-8c14-88a456286506
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.school
+id: node.school
+target_entity_type_id: node
+target_bundle: school
+default_langcode: fr
+language_alterable: true

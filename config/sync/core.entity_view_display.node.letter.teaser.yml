@@ -50,3 +50,4 @@ hidden:
   field_letter_school_description: true
   field_letter_school_type: true
   field_letter_tawjeeh_promotion: true
+  langcode: true

@@ -111,5 +111,6 @@ hidden:
   field_student_semester_score: true
   field_student_sms_channel: true
   field_student_transcript_file: true
+  langcode: true
   language: true
   timezone: true

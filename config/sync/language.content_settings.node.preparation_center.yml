@@ -1,0 +1,11 @@
+uuid: e53de6d8-8ff7-4113-9224-2433ae606844
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.preparation_center
+id: node.preparation_center
+target_entity_type_id: node
+target_bundle: preparation_center
+default_langcode: fr
+language_alterable: true

@@ -99,6 +99,7 @@ class ScholarshipController extends ControllerBase {
   private function scholarshipNormalize(EntityInterface $node): array
   {
     return [
+      'lang' => $node->get('langcode')->value,
       'id' => $node->id(),
       'name' => $node->label(),
       'picture' => $this->fileUrlGenerator->generateAbsoluteString($node->get('field_scholarship_picture')->entity->getFileUri()),

@@ -72,6 +72,7 @@ class LetterController extends ControllerBase {
   private function letterNormalize(EntityInterface $node): array
   {
     return [
+      'lang' => $node->get('langcode')->value,
       'id' => $node->id(),
       'title' => $node->label(),
       'picture' => $this->fileUrlGenerator->generateAbsoluteString($node->get('field_letter_picture')->entity->getFileUri()),

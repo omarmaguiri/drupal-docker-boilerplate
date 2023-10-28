@@ -42,3 +42,4 @@ hidden:
   field_school_picture: true
   field_school_type: true
   field_school_website: true
+  langcode: true
