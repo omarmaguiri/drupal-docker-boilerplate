@@ -20,6 +20,11 @@ settings:
             - Bold
             - Italic
         -
+          name: Direction
+          items:
+            - BidiLtr
+            - BidiRtl
+        -
           name: Linking
           items:
             - DrupalLink
@@ -49,5 +54,5 @@ image_upload:
   directory: inline-images
   max_size: ''
   max_dimensions:
-    width: 0
-    height: 0
+    width: null
+    height: null
