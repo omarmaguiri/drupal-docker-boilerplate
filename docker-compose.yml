@@ -32,6 +32,7 @@ services:
       - database
     env_file:
       - .env
+      - .env.local
 #    environment:
 #      DRUSH_OPTIONS_URI: "http://${PROJECT_BASE_URL}:${PROJECT_PORT}"
 
@@ -70,6 +71,7 @@ services:
       PROJECT_WORKDIR: ${PROJECT_WORKDIR:-/srv/app}
     env_file:
       - .env
+      - .env.local
 
 volumes:
   db-data:
