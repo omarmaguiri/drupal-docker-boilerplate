@@ -86,8 +86,8 @@ class LetterController extends ControllerBase {
       ],
       'registration' => [
         'link' => [
-          'title' => $node->get('field_letter_register_link')->first()->getValue()['title'],
-          'uri' => $node->get('field_letter_register_link')->first()->getValue()['uri'],
+          'title' => $node->get('field_letter_register_link')->first()?->getValue()['title'],
+          'uri' => $node->get('field_letter_register_link')->first()?->getValue()['uri'],
         ],
         'deadline' => $node->get('field_letter_register_deadline')->value,
         'method' => $node->get('field_letter_register_method')->value,
