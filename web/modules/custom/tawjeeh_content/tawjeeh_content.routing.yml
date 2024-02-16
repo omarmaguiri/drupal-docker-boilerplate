@@ -6,6 +6,7 @@ tawjeeh_content.api.schools:
   requirements:
     _user_is_logged_in: 'TRUE'
   options:
+    no_cache: 'TRUE'
     _auth: [ 'api_jwt_auth' ]
 
 tawjeeh_content.api.schools.get:
@@ -19,6 +20,7 @@ tawjeeh_content.api.schools.get:
     parameters:
       school:
         type: entity:node
+    no_cache: 'TRUE'
     _auth: [ 'api_jwt_auth' ]
 
 tawjeeh_content.api.schools_categories:
@@ -29,6 +31,7 @@ tawjeeh_content.api.schools_categories:
   requirements:
     _user_is_logged_in: 'TRUE'
   options:
+    no_cache: 'TRUE'
     _auth: [ 'api_jwt_auth' ]
 
 tawjeeh_content.api.schools_categories.get:
@@ -42,6 +45,7 @@ tawjeeh_content.api.schools_categories.get:
     parameters:
       category:
         type: entity:taxonomy_term
+    no_cache: 'TRUE'
     _auth: [ 'api_jwt_auth' ]
 
 tawjeeh_content.api.schools_groups.get:
@@ -55,6 +59,7 @@ tawjeeh_content.api.schools_groups.get:
     parameters:
       group:
         type: entity:taxonomy_term
+    no_cache: 'TRUE'
     _auth: [ 'api_jwt_auth' ]
 
 tawjeeh_content.api.preparation-centers:
@@ -65,6 +70,7 @@ tawjeeh_content.api.preparation-centers:
   requirements:
     _user_is_logged_in: 'TRUE'
   options:
+    no_cache: 'TRUE'
     _auth: [ 'api_jwt_auth' ]
 
 tawjeeh_content.api.preparation-centers.get:
@@ -78,6 +84,7 @@ tawjeeh_content.api.preparation-centers.get:
     parameters:
       center:
         type: entity:node
+    no_cache: 'TRUE'
     _auth: [ 'api_jwt_auth' ]
 
 tawjeeh_content.api.preparation-centers_cities:
@@ -88,6 +95,7 @@ tawjeeh_content.api.preparation-centers_cities:
   requirements:
     _user_is_logged_in: 'TRUE'
   options:
+    no_cache: 'TRUE'
     _auth: [ 'api_jwt_auth' ]
 
 tawjeeh_content.api.scholarships:
@@ -98,6 +106,7 @@ tawjeeh_content.api.scholarships:
   requirements:
     _user_is_logged_in: 'TRUE'
   options:
+    no_cache: 'TRUE'
     _auth: [ 'api_jwt_auth' ]
 
 tawjeeh_content.api.scholarships.get:
@@ -111,6 +120,7 @@ tawjeeh_content.api.scholarships.get:
     parameters:
       scholarship:
         type: entity:node
+    no_cache: 'TRUE'
     _auth: [ 'api_jwt_auth' ]
 
 tawjeeh_content.api.scholarships_countries:
@@ -121,6 +131,7 @@ tawjeeh_content.api.scholarships_countries:
   requirements:
     _user_is_logged_in: 'TRUE'
   options:
+    no_cache: 'TRUE'
     _auth: [ 'api_jwt_auth' ]
 
 tawjeeh_content.api.letters:

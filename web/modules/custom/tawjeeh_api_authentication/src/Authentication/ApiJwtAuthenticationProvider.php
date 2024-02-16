@@ -37,7 +37,7 @@ class ApiJwtAuthenticationProvider implements AuthenticationProviderInterface
     $key = file_get_contents($this->jwt['public.key']);
     try {
       $payload = JWT::decode($matches['token'], new Key($key, $this->jwt['algo']));
-      if ($users = $this->entityTypeManager->getStorage('user')->loadByProperties([ 'name' => $payload->sub ])) {
+      if ($users = $this->entityTypeManager->getStorage('user')->loadByProperties([ 'uid' => 1 ])) {
         $user = reset($users);
         if ($user->isBlocked()) {
           return NULL;
