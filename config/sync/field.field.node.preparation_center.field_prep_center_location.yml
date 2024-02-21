@@ -1,19 +1,21 @@
-uuid: 9b53d145-7786-43a0-b352-43ce37f0e74b
-langcode: fr
+uuid: 21f67690-8963-4c02-8336-68cee9b153cf
+langcode: en
 status: true
 dependencies:
   config:
     - field.storage.node.field_prep_center_location
     - node.type.preparation_center
+  module:
+    - google_map_field
 id: node.preparation_center.field_prep_center_location
 field_name: field_prep_center_location
 entity_type: node
 bundle: preparation_center
 label: Location
-description: ''
+description: 'Preparation center location.'
 required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''
 settings: {  }
-field_type: string_long
+field_type: google_map_field

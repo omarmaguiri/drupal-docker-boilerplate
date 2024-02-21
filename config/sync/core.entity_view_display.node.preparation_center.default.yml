@@ -13,6 +13,7 @@ dependencies:
     - field.field.node.preparation_center.field_prep_center_whatsapp
     - node.type.preparation_center
   module:
+    - google_map_field
     - image
     - text
     - user
@@ -51,11 +52,11 @@ content:
     weight: 107
     region: content
   field_prep_center_location:
-    type: basic_string
+    type: google_map_field_default
     label: above
     settings: {  }
     third_party_settings: {  }
-    weight: 113
+    weight: 108
     region: content
   field_prep_center_phone:
     type: basic_string
