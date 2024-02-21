@@ -1,16 +1,16 @@
-uuid: 3332d3b4-5a1c-4f10-a0b9-331f2053334f
-langcode: en
+uuid: e673408b-5f37-4ca7-9739-01d4bb91b4b7
+langcode: fr
 status: true
 dependencies:
   module:
-    - google_map_field
     - node
 id: node.field_prep_center_location
 field_name: field_prep_center_location
 entity_type: node
-type: google_map_field
-settings: {  }
-module: google_map_field
+type: string_long
+settings:
+  case_sensitive: false
+module: core
 locked: false
 cardinality: 1
 translatable: true

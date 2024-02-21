@@ -111,7 +111,7 @@ class PreparationCenterController extends ControllerBase {
       'phone' => $node->get('field_prep_center_phone')->value,
       'whatsapp' => $node->get('field_prep_center_whatsapp')->value,
       'city' => $node->get('field_prep_center_city')->entity->label(),
-      'location' => $node->get('field_prep_center_location')->first()?->getValue(),
+      'location' => $node->get('field_prep_center_location')->value,
     ];
   }
 }

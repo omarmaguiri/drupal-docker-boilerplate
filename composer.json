@@ -23,7 +23,6 @@
         "drupal/core-project-message": "^9.4",
         "drupal/core-recommended": "^9.4",
         "drupal/country": "^1.0",
-        "drupal/google_map_field": "^2.0",
         "firebase/php-jwt": "^6.3"
     },
     "conflict": {
