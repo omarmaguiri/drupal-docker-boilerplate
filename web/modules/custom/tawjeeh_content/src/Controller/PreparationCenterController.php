@@ -8,6 +8,7 @@ use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\File\FileUrlGeneratorInterface;
 use Drupal\file\Entity\File;
+use Drupal\node\Entity\Node;
 use Drupal\node\NodeInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -42,17 +43,19 @@ class PreparationCenterController extends ControllerBase {
   }
   public function all(Request $request): CacheableJsonResponse
   {
-    $properties = [
-      'status' => 1,
-      'type' => 'preparation_center',
-    ];
-    if ($city = $request->query->get('city')) {
-      $properties['field_prep_center_city'] = $city;
-    }
-    $nodes = $this->entityTypeManager()
+    $query = $this->entityTypeManager()
       ->getStorage('node')
-      ->loadByProperties($properties);
+      ->getQuery()
+      ->condition('status', 1)
+      ->condition('type', 'preparation_center')
+      ->sort('created', 'DESC');
 
+    if ($city = $request->query->get('city')) {
+      $query->condition('field_prep_center_city', $city);
+    }
+
+    $nids = $query->execute();
+    $nodes = Node::loadMultiple($nids);
     $centers = [];
     foreach ($nodes as $node) {
       $centers[] = $this->centerNormalize($node);

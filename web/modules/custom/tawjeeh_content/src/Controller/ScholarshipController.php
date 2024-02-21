@@ -8,6 +8,7 @@ use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\File\FileUrlGeneratorInterface;
 use Drupal\file\Entity\File;
+use Drupal\node\Entity\Node;
 use Drupal\node\NodeInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -44,19 +45,21 @@ class ScholarshipController extends ControllerBase {
   }
   public function all(Request $request): CacheableJsonResponse
   {
-    $country = $request->query->get('country');
-    $nodes = $this->entityTypeManager()
+    $query = $this->entityTypeManager()
       ->getStorage('node')
-      ->loadByProperties([
-        'status' => 1,
-        'type' => 'scholarship',
-      ]);
+      ->getQuery()
+      ->condition('status', 1)
+      ->condition('type', 'scholarship')
+      ->sort('created', 'DESC');
 
+    if ($country = $request->query->get('country')) {
+      $query->condition('field_scholarship_country', strtoupper($country));
+    }
+
+    $nids = $query->execute();
+    $nodes = Node::loadMultiple($nids);
     $scholarships = [];
     foreach ($nodes as $node) {
-      if ($country && strtoupper($country) !== strtoupper($node->get('field_scholarship_country')->first()->getString())) {
-        continue;
-      }
       $scholarships[] = $this->scholarshipNormalize($node);
     }
     $cacheMetadata['#cache'] = [

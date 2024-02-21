@@ -9,6 +9,7 @@ use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\File\FileUrlGeneratorInterface;
 use Drupal\Core\Routing\UrlGeneratorInterface;
 use Drupal\file\Entity\File;
+use Drupal\node\Entity\Node;
 use Drupal\node\NodeInterface;
 use Drupal\taxonomy\Entity\Term;
 use Drupal\taxonomy\TermInterface;
@@ -48,12 +49,15 @@ class SchoolController extends ControllerBase {
 
   public function all(): CacheableJsonResponse
   {
-    $nodes = $this->entityTypeManager()
+    $nids = $this->entityTypeManager()
       ->getStorage('node')
-      ->loadByProperties([
-        'status' => 1,
-        'type' => 'school',
-      ]);
+      ->getQuery()
+      ->condition('status', 1)
+      ->condition('type', 'school')
+      ->sort('created', 'DESC')
+      ->execute();
+    $nodes = Node::loadMultiple($nids);
+
     $schools = [];
     foreach ($nodes as $node) {
       $schools[] = $this->schoolNormalize($node);
