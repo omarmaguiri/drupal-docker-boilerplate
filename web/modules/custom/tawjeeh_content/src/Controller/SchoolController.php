@@ -10,6 +10,7 @@ use Drupal\Core\File\FileUrlGeneratorInterface;
 use Drupal\Core\Routing\UrlGeneratorInterface;
 use Drupal\file\Entity\File;
 use Drupal\node\NodeInterface;
+use Drupal\taxonomy\Entity\Term;
 use Drupal\taxonomy\TermInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -71,26 +72,28 @@ class SchoolController extends ControllerBase {
 
   public function getCategories(): CacheableJsonResponse
   {
-    $nodes = $this->entityTypeManager()
-      ->getStorage('node')
-      ->loadByProperties([
-        'status' => 1,
-        'type' => 'school',
-      ]);
+    $query = \Drupal::entityQueryAggregate('node');
+
+    $results = $query
+      ->condition('type', 'school')
+      ->groupBy('field_school_category')
+      ->aggregate('nid', 'COUNT', alias: $count)
+      ->execute();
+
+    $terms = Term::loadMultiple(array_map(fn ($row) => $row['field_school_category_target_id'], $results));
+
     $categories = [];
-    foreach ($nodes as $node) {
-      foreach ($node->get('field_school_category')->referencedEntities() as $category) {
-        if (!array_key_exists($category->id(), $categories)) {
-          $categories[$category->id()] = [
-            'id' => $category->id(),
-            'name' => $category->label(),
-            '@link' => $this->urlGenerator->generateFromRoute('tawjeeh_content.api.schools_categories.get', ['category' => $category->id()], [], TRUE)->getGeneratedUrl(),
-            'count' => 1,
-          ];
-          continue;
-        }
-        $categories[$category->id()]['count']++;
+    foreach ($results as $row) {
+      $category = $terms[ $row['field_school_category_target_id'] ] ?? NULL;
+      if (!$category) {
+        continue;
       }
+      $categories[$category->id()] = [
+        'id' => $category->id(),
+        'name' => $category->label(),
+        '@link' => $this->urlGenerator->getPathFromRoute('tawjeeh_content.api.schools_categories.get', ['category' => $category->id()]),
+        'count' => $row[ $count ] ?? 0,
+      ];
     }
 
     $cacheMetadata['#cache'] = [
@@ -202,6 +205,7 @@ class SchoolController extends ControllerBase {
       'phone' => $node->get('field_school_phone')->value,
       'website' => $node->get('field_school_website')->first() ? $node->get('field_school_website')->first()->getUrl()->toString() : null,
       'city' => $node->get('field_school_city')->entity ? $node->get('field_school_city')->entity->label() : null,
+      'address' => $node->get('field_school_address')?->value,
       'fields' => $node->get('field_school_fields')->value,
       'formations' => $node->get('field_school_formations')->value,
     ];
