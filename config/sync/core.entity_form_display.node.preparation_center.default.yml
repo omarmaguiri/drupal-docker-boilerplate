@@ -14,7 +14,6 @@ dependencies:
     - image.style.thumbnail
     - node.type.preparation_center
   module:
-    - google_map_field
     - image
     - telephone
     - text
@@ -58,10 +57,12 @@ content:
       size: 60
     third_party_settings: {  }
   field_prep_center_location:
-    type: google_map_field_default
-    weight: 10
+    type: string_textarea
+    weight: 26
     region: content
-    settings: {  }
+    settings:
+      rows: 1
+      placeholder: ''
     third_party_settings: {  }
   field_prep_center_phone:
     type: telephone_default
