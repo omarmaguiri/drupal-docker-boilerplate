@@ -4,6 +4,7 @@ services:
   database:
     image: ${DATABASE_TAG}
     container_name: ${PROJECT_NAME}_database
+    restart: unless-stopped
     stop_grace_period: 30s
     environment:
       MYSQL_ROOT_PASSWORD: ${DATABASE_ROOT_PASSWORD}
